@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miloš Lipničan — IT Application Support & Automation</title>
+<meta name="description" content="Portfolio of Miloš Lipničan — IT Application Support & Automation Specialist. Python, Perl, REST API, Google Cloud Run.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d1117;
+    --bg-soft:#161b22;
+    --bg-card:#161b22;
+    --border:#21262d;
+    --border-hover:#30363d;
+    --text:#e6edf3;
+    --text-dim:#8b949e;
+    --text-faint:#6e7681;
+    --accent:#2f81f7;
+    --accent-soft:#1f6feb33;
+    --accent-2:#3fb950;
+    --radius:12px;
+    --maxw:880px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ambient gradient blobs */
+  .bg-fx{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.18;}
+  .blob.b1{width:420px;height:420px;background:#2f81f7;top:-120px;right:-80px;}
+  .blob.b2{width:380px;height:380px;background:#3fb950;bottom:10%;left:-120px;opacity:.12;}
+
+  /* top bar */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,17,23,.7);border-bottom:1px solid var(--border);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:-.02em;}
+  .brand .dot{color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .nav-links{display:flex;gap:20px;}
+  .nav-links a{color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .lang{display:inline-flex;border:1px solid var(--border-hover);border-radius:8px;overflow:hidden;}
+  .lang button{border:none;background:transparent;color:var(--text-dim);padding:5px 11px;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:inherit;}
+  .lang button.on{background:var(--accent);color:#fff;}
+
+  /* hero */
+  .hero{padding:90px 0 70px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);margin-bottom:18px;letter-spacing:.02em;}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(34px,6vw,54px);font-weight:700;line-height:1.08;letter-spacing:-.03em;margin-bottom:18px;}
+  .hero h1 .grad{background:linear-gradient(120deg,#2f81f7,#3fb950);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .typed{color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:clamp(15px,2.4vw,19px);min-height:1.6em;margin-bottom:22px;}
+  .typed .cursor{display:inline-block;width:9px;background:var(--accent);margin-left:2px;animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero p.lead{color:var(--text-dim);font-size:17px;max-width:600px;margin-bottom:30px;}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:500;padding:11px 20px;border-radius:10px;transition:all .2s;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--accent);color:#fff;}
+  .btn.primary:hover{background:#4493f8;transform:translateY(-2px);}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border-hover);}
+  .btn.ghost:hover{border-color:var(--text-dim);transform:translateY(-2px);}
+
+  /* sections */
+  section{padding:54px 0;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:30px;}
+  .sec-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);}
+  .sec-head h2{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.02em;}
+  .sec-head .rule{flex:1;height:1px;background:var(--border);}
+
+  /* skills */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+  .skill-card h3{font-size:14px;font-weight:600;margin-bottom:14px;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .skill-card h3 .ic{color:var(--accent);font-size:17px;}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:4px 10px;border-radius:7px;background:var(--bg-soft);border:1px solid var(--border);color:var(--text-dim);}
+
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+  .proj{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:transform .22s,border-color .22s;}
+  .proj:hover{transform:translateY(-4px);border-color:var(--accent);}
+  .proj .pic{font-size:24px;color:var(--accent);margin-bottom:14px;}
+  .proj h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px;}
+  .proj .stack{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-faint);margin-bottom:10px;}
+  .proj p{font-size:14.5px;color:var(--text-dim);flex:1;margin-bottom:16px;}
+  .proj-links{display:flex;gap:16px;}
+  .proj-links a{font-size:13.5px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;}
+  .proj-links a:hover{color:var(--accent);}
+  .proj-links a .ic{font-size:15px;}
+
+  /* contact */
+  .contact-row{display:flex;flex-wrap:wrap;gap:12px;}
+  .cbtn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--text);background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:11px 17px;font-size:14px;transition:all .2s;}
+  .cbtn:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .cbtn .ic{font-size:18px;color:var(--accent);}
+
+  footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-faint);font-size:13px;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .typed .cursor{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+  @media(max-width:600px){
+    .nav-links{display:none;}
+    .hero{padding:60px 0 50px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-fx"><div class="blob b1"></div><div class="blob b2"></div></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">ML<span class="dot">.</span></div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#skills" data-i18n="nav_skills">Technológie</a>
+        <a href="#projects" data-i18n="nav_projects">Projekty</a>
+        <a href="#contact" data-i18n="nav_contact">Kontakt</a>
+      </nav>
+      <div class="lang">
+        <button id="bt-sk" class="on">SK</button>
+        <button id="bt-en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow reveal">📍 Bratislava, Slovensko</div>
+    <h1 class="reveal">Ing. Miloš Lipničan<br><span class="grad" data-i18n="hero_grad">Automatizácia &amp; IT podpora</span></h1>
+    <div class="typed reveal" id="typed"><span class="cursor">&nbsp;</span></div>
+    <p class="lead reveal" data-i18n="hero_lead">Vyše 7 rokov skúseností v IT podpore a automatizácii. Staviam praktické nástroje v Pythone a Perli, integrujem REST API a nasadzujem na Google Cloud Run.</p>
+    <div class="cta-row reveal">
+      <a class="btn primary" href="#projects"><span data-i18n="cta_projects">Pozri projekty</span> →</a>
+      <a class="btn ghost" href="https://github.com/Lipnicanmilos" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2 data-i18n="sec_skills">Technológie</h2><div class="rule"></div></div>
+    <div class="skill-groups">
+      <div class="skill-card reveal">
+        <h3><span class="ic">⟨⟩</span> <span data-i18n="sk_lang">Jazyky &amp; skriptovanie</span></h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Perl</span><span class="tag">SQL</span><span class="tag">Bash</span><span class="tag">PowerShell</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="ic">▤</span> <span data-i18n="sk_data">Databázy &amp; dáta</span></h3>
+        <div class="tags"><span class="tag">Oracle</span><span class="tag">PostgreSQL</span><span class="tag">SQL*Loader</span><span class="tag">SQLite</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="ic">☁</span> <span data-i18n="sk_cloud">Cloud &amp; DevOps</span></h3>
+        <div class="tags"><span class="tag">Google Cloud Run</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GitHub CI/CD</span><span class="tag">AWS Lambda</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="ic">◎</span> <span data-i18n="sk_ops">Integrácie &amp; monitoring</span></h3>
+        <div class="tags"><span class="tag">REST API</span><span class="tag">FastAPI</span><span class="tag">Grafana</span><span class="tag">Zabbix</span><span class="tag">ITIL 4</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2 data-i18n="sec_projects">Projekty</h2><div class="rule"></div></div>
+    <div class="proj-grid" id="proj-grid"></div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2 data-i18n="sec_contact">Kontakt</h2><div class="rule"></div></div>
+    <p class="lead reveal" data-i18n="contact_lead" style="margin-bottom:24px;">Otvorený novým príležitostiam. Ozvite sa.</p>
+    <div class="contact-row reveal">
+      <a class="cbtn" href="https://github.com/Lipnicanmilos" target="_blank" rel="noopener"><span class="ic">⌨</span> GitHub</a>
+      <a class="cbtn" href="https://www.linkedin.com/in/" target="_blank" rel="noopener"><span class="ic">in</span> LinkedIn</a>
+      <a class="cbtn" href="mailto:lipnicanmilos@gmail.com"><span class="ic">✉</span> Email</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Miloš Lipničan · <span data-i18n="footer_built">postavené ako statická stránka na GitHub Pages</span></div>
+</footer>
+
+<script>
+/* ---------- DATA ---------- */
+var PROJECTS = [
+  {
+    icon:"❑",
+    name:"LexiNova",
+    stack:"FastAPI · Jinja2 · PWA · Cloud Run",
+    sk:"Progresívna webová aplikácia na učenie slovensko-anglických slovíčok. Plne offline režim cez service worker, SM-2 opakovanie, nasadené na Google Cloud Run.",
+    en:"Progressive web app for learning Slovak–English vocabulary. Full offline mode via service worker, SM-2 spaced repetition, deployed on Google Cloud Run.",
+    live:"https://lexinova-1096007793591.us-central1.run.app",
+    code:"https://github.com/Lipnicanmilos/lexinova"
+  },
+  {
+    icon:"⚲",
+    name:"Job Scraper",
+    stack:"Python · AWS Lambda · DynamoDB · SES",
+    sk:"Automatizovaný scraper pracovných ponúk z Profesia.sk a LinkedIn s dynamickým stránkovaním, ukladaním do DynamoDB a e-mailovými notifikáciami cez SES.",
+    en:"Automated job scraper for Profesia.sk and LinkedIn with dynamic pagination, DynamoDB storage and email notifications via SES.",
+    live:"",
+    code:""
+  },
+  {
+    icon:"▦",
+    name:"Report Automation",
+    stack:"Perl · Oracle · SQL*Loader",
+    sk:"Denné generovanie Oracle reportov a ich e-mailová distribúcia. Dátový pipeline s extrakciou platobných dát cez SQL*Loader.",
+    en:"Daily Oracle report generation and email distribution. Data pipeline extracting payment data via SQL*Loader.",
+    live:"",
+    code:""
+  },
+  {
+    icon:"⊞",
+    name:"Log Analyzer",
+    stack:"Python · Oracle · Excel",
+    sk:"Mesačná analýza error logov z dvoch aplikačných serverov s obohatením o Oracle dáta a exportom do Excelu.",
+    en:"Monthly error-log analysis from two application servers, enriched with Oracle data and exported to Excel.",
+    live:"",
+    code:""
+  }
+];
+
+/* ---------- I18N ---------- */
+var I18N = {
+  sk:{
+    nav_skills:"Technológie", nav_projects:"Projekty", nav_contact:"Kontakt",
+    hero_grad:"Automatizácia & IT podpora",
+    hero_lead:"Vyše 7 rokov skúseností v IT podpore a automatizácii. Staviam praktické nástroje v Pythone a Perli, integrujem REST API a nasadzujem na Google Cloud Run.",
+    cta_projects:"Pozri projekty",
+    sec_skills:"Technológie", sec_projects:"Projekty", sec_contact:"Kontakt",
+    sk_lang:"Jazyky & skriptovanie", sk_data:"Databázy & dáta", sk_cloud:"Cloud & DevOps", sk_ops:"Integrácie & monitoring",
+    contact_lead:"Otvorený novým príležitostiam. Ozvite sa.",
+    footer_built:"postavené ako statická stránka na GitHub Pages",
+    live:"Spustiť", code:"Kód",
+    typed:["IT Application Support Specialist","Python & Perl automatizácia","FastAPI · Cloud Run · Docker","7+ rokov v SkyToll"]
+  },
+  en:{
+    nav_skills:"Skills", nav_projects:"Projects", nav_contact:"Contact",
+    hero_grad:"Automation & IT Support",
+    hero_lead:"7+ years of experience in IT support and automation. I build practical tools in Python and Perl, integrate REST APIs, and deploy to Google Cloud Run.",
+    cta_projects:"View projects",
+    sec_skills:"Skills", sec_projects:"Projects", sec_contact:"Contact",
+    sk_lang:"Languages & scripting", sk_data:"Databases & data", sk_cloud:"Cloud & DevOps", sk_ops:"Integrations & monitoring",
+    contact_lead:"Open to new opportunities. Let's talk.",
+    footer_built:"built as a static site on GitHub Pages",
+    live:"Live", code:"Code",
+    typed:["IT Application Support Specialist","Python & Perl automation","FastAPI · Cloud Run · Docker","7+ years at SkyToll"]
+  }
+};
+
+var lang = "sk";
+
+/* ---------- RENDER PROJECTS ---------- */
+function renderProjects(){
+  var t = I18N[lang];
+  var html = PROJECTS.map(function(p){
+    var links = "";
+    if(p.live) links += '<a href="'+p.live+'" target="_blank" rel="noopener"><span class="ic">↗</span>'+t.live+'</a>';
+    if(p.code) links += '<a href="'+p.code+'" target="_blank" rel="noopener"><span class="ic">⌨</span>'+t.code+'</a>';
+    return '<article class="proj reveal in">'+
+      '<div class="pic">'+p.icon+'</div>'+
+      '<h3>'+p.name+'</h3>'+
+      '<div class="stack">'+p.stack+'</div>'+
+      '<p>'+p[lang]+'</p>'+
+      '<div class="proj-links">'+links+'</div>'+
+    '</article>';
+  }).join("");
+  document.getElementById("proj-grid").innerHTML = html;
+}
+
+/* ---------- APPLY LANGUAGE ---------- */
+function applyLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  var t = I18N[l];
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k = el.getAttribute("data-i18n");
+    if(t[k]) el.textContent = t[k];
+  });
+  document.getElementById("bt-sk").classList.toggle("on", l==="sk");
+  document.getElementById("bt-en").classList.toggle("on", l==="en");
+  renderProjects();
+  startTyping();
+}
+
+/* ---------- TYPING EFFECT ---------- */
+var typeTimer=null, typeState={line:0,char:0,deleting:false};
+function startTyping(){
+  if(typeTimer) clearTimeout(typeTimer);
+  typeState={line:0,char:0,deleting:false};
+  typeLoop();
+}
+function typeLoop(){
+  var lines = I18N[lang].typed;
+  var el = document.getElementById("typed");
+  var cur = lines[typeState.line];
+  if(!typeState.deleting){
+    typeState.char++;
+    if(typeState.char > cur.length){
+      typeState.deleting=true;
+      typeTimer=setTimeout(typeLoop,1400);
+      return;
+    }
+  } else {
+    typeState.char--;
+    if(typeState.char===0){
+      typeState.deleting=false;
+      typeState.line=(typeState.line+1)%lines.length;
+    }
+  }
+  el.innerHTML = cur.substring(0,typeState.char) + '<span class="cursor">&nbsp;</span>';
+  typeTimer=setTimeout(typeLoop, typeState.deleting?45:75);
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+function initReveal(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+}
+
+/* ---------- INIT ---------- */
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("bt-sk").onclick=function(){applyLang("sk");};
+document.getElementById("bt-en").onclick=function(){applyLang("en");};
+applyLang("sk");
+initReveal();
+</script>
+
+</body>
+</html>
