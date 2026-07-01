@@ -378,10 +378,15 @@ en_desc:"Analysis and validation of toll-gate data from photographic records, co
   
 var PROJECTS = [
 
-{ icon:"❑", name:"Lexinova", stack:"FastAPI · PostgreSQL · PWA · Cloud Run",
+{ icon:"❑", name:"Lexinova (FastAPI)", stack:"FastAPI · PostgreSQL · PWA · Cloud Run",
 sk:"Asynchrónna backend architektúra v FastAPI (Type Hinting, Pydantic), návrh PostgreSQL databázy a automatizované CI/CD nasadenie do Google Cloud Run cez GitHub.",
 en:"Async backend architecture in FastAPI (type hinting, Pydantic), PostgreSQL database design, and automated CI/CD deployment to Google Cloud Run via GitHub.",
 live:"https://lexinova-1096007793591.us-central1.run.app/", code:"https://github.com/Lipnicanmilos/lexinova" },
+
+{ icon:"◲", name:"Tracking Projects Pulse (Django)", stack:"Django · APScheduler · cx_Oracle · pyodbc · Paramiko · ReportLab · pandas · JIRA",
+sk:"Interný nástroj (framework Django) na automatizáciu reportingu a monitoringu. Plánované úlohy (APScheduler) generujú denné/týždenné reporty v Exceli (openpyxl, XlsxWriter, pandas) a PDF (ReportLab, xhtml2pdf). Parsujem serverové logy sťahované cez SSH (Paramiko), pripájam sa na databázy Oracle (cx_Oracle) a SQL Server (pyodbc) a integrujem JIRA (knižnica jira + REST API) a SharePoint (Office365). Automatizoval som denné faktúry a mýtne reporty, marketingové štatistiky, EDZ podania, PAYWELL, inactivity reporty a monitoring oceňovania s notifikáciami do JIRA.",
+en:"Internal tool (Django framework) for reporting & monitoring automation. Scheduled jobs (APScheduler) generate daily/weekly Excel (openpyxl, XlsxWriter, pandas) and PDF (ReportLab, xhtml2pdf) reports, parse server logs fetched over SSH (Paramiko), connect to Oracle (cx_Oracle) and SQL Server (pyodbc) databases, and integrate JIRA (jira library + REST API) and SharePoint (Office365). Automated daily invoice/toll reports, marketing stats, submissions, PAYWELL, inactivity reports, and rating monitoring with JIRA notifications.",
+live:"", code:"https://github.com/Lipnicanmilos/Tracking_Projects_Pulse" },
 
 { icon:"▩", name:"VocabMaster", stack:"Litestar · SQLAlchemy · Jinja2 · JWT",
 sk:"Webová appka na učenie slovíčok — používatelia, kategórie, slovíčka s úrovňami znalosti, testovací režim a import z Excelu; JWT + bcrypt autentifikácia.",
@@ -401,17 +406,7 @@ live:"", code:"https://github.com/Lipnicanmilos/Django_app" },
 { icon:"✎", name:"Flask Code Board", stack:"Flask · SQLAlchemy · SQLite",
 sk:"Appka na zdieľanie príspevkov s ukážkami kódu – registrácia, prihlásenie, komentáre a úprava vlastných príspevkov.",
 en:"App for sharing posts with code snippets — registration, login, comments, and editing of your own posts.",
-live:"", code:"https://github.com/Lipnicanmilos/flask-code-board" },
-
-{ icon:"⚲", name:"Job Scraper", stack:"Python · AWS Lambda · DynamoDB · SES",
-sk:"Automatizovaný scraper pracovných ponúk z Profesia.sk a LinkedIn s dynamickým stránkovaním a e-mailovými notifikáciami.",
-en:"Automated job scraper for Profesia.sk and LinkedIn with dynamic pagination and email notifications.",
-live:"", code:"" },
-
-{ icon:"▦", name:"Report Automation", stack:"Perl · Oracle · SQL*Loader",
-sk:"Denné generovanie Oracle reportov a ich e-mailová distribúcia; dátový pipeline s extrakciou dát cez SQL*Loader.",
-en:"Daily Oracle report generation and email distribution; data pipeline extracting data via SQL*Loader.",
-live:"", code:"" }
+live:"", code:"https://github.com/Lipnicanmilos/flask-code-board" }
 
 ];
 
