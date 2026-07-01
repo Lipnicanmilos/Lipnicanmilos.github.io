@@ -25,7 +25,6 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-s
 .blob.b1{width:420px;height:420px;background:#2f81f7;top:-120px;right:-80px;}
 .blob.b2{width:380px;height:380px;background:#3fb950;bottom:10%;left:-120px;opacity:.12;}
 
-/* --- Pozadové ozubené kolesá --- */
 .gear-bg{position:absolute;opacity:.06;pointer-events:none;}
 .gear-bg--1{width:340px;height:340px;top:8%;right:-60px;}
 .gear-bg--2{width:240px;height:240px;bottom:6%;left:-40px;}
@@ -59,11 +58,8 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rg
 .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border-hover);}
 .btn.ghost:hover{border-color:var(--text-dim);transform:translateY(-2px);}
 
-/* --- Scroll progress bar navrchu --- */
 .scroll-prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,#2f81f7,#3fb950);box-shadow:0 0 8px #2f81f7aa;transition:width .08s linear;}
 
-
-/* === HTML/CSS dátový pipeline (spoľahlivé v náhľade aj prehliadači) === */
 .pipeline{max-width:640px;margin:34px 0 0;}
 .flow{position:relative;display:flex;justify-content:space-between;align-items:flex-start;padding:0 4px;perspective:700px;}
 .flow-track{position:absolute;top:22px;left:6%;right:6%;height:2px;background:linear-gradient(90deg,#2f81f7,#3fb950);opacity:.35;background-size:200% 100%;animation:track-flow 3s linear infinite;}
@@ -71,7 +67,6 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rg
 .node{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;width:60px;z-index:2;transform-style:preserve-3d;}
 .node-box{width:46px;height:46px;border-radius:11px;background:#161b22;border:2px solid var(--c);display:flex;align-items:center;justify-content:center;transition:box-shadow .25s ease,transform .25s ease;transform-style:preserve-3d;will-change:transform;}
 .node-box svg{width:26px;height:26px;}
-/* stále 3D vznášanie každej ikony, posunuté v čase */
 #nUser .node-box{animation:float3d 4s ease-in-out infinite;}
 #nPy .node-box{animation:float3d 4s ease-in-out infinite;animation-delay:.5s;}
 #nDb .node-box{animation:float3d 4s ease-in-out infinite;animation-delay:1s;}
@@ -85,20 +80,15 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rg
 }
 .node-py{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:#3fb950;}
 .node-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:#6e7681;letter-spacing:.04em;text-align:center;white-space:nowrap;transition:color .25s ease;}
-/* rozsvietený uzol (vlna toku, riadi JS .lit) */
 .node.lit .node-box{box-shadow:0 0 22px var(--c),0 0 6px var(--c) inset;transform:translateY(-6px) scale(1.18) rotateX(0deg) rotateY(0deg);border-color:var(--c);animation:none;}
 .node.lit .node-lbl{color:var(--c);}
-/* 3D hover – ikona sa nakloní k používateľovi */
 .node:hover .node-box{transform:translateY(-4px) scale(1.12) rotateX(8deg);box-shadow:0 12px 24px -8px var(--c),0 0 18px var(--c);animation-play-state:paused;}
-/* AI uzol navyše pulzuje */
 .node-ai .node-box{box-shadow:0 0 6px #3fb950;}
 .node-ai.lit .node-box{box-shadow:0 0 26px #3fb950,0 0 8px #3fb950 inset;}
 @keyframes ai-pulse{0%,100%{box-shadow:0 0 2px #3fb950;}50%{box-shadow:0 0 14px #3fb950;}}
-/* drobné pohyby vnútri ikon */
 .node-py{animation:py-bounce 1.6s ease-in-out infinite;display:inline-block;}
 @keyframes py-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
 
-/* pohyblivé pakety (HTML elementy, pohyb v %) */
 .pkt{position:absolute;top:18px;left:6%;width:11px;height:11px;border-radius:3px;background:#3fb950;z-index:3;box-shadow:0 0 8px #3fb950;}
 .pkt-a{animation:pkt-fwd 5s linear infinite;}
 .pkt-b{background:#2f81f7;box-shadow:0 0 8px #2f81f7;animation:pkt-fwd 5s linear infinite;animation-delay:1.6s;}
@@ -162,6 +152,19 @@ section{padding:54px 0;}
 .proj-links a{font-size:13.5px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;}
 .proj-links a:hover{color:var(--accent);}
 .proj-links a .ic{font-size:15px;}
+
+.early-proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.early-proj{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;flex-direction:column;opacity:.7;transition:opacity .25s ease,transform .25s ease;}
+.early-proj:hover{opacity:1;transform:translateY(-3px);}
+.early-proj .pic{font-size:17px;color:var(--text-faint);margin-bottom:8px;}
+.early-proj h3{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:500;margin-bottom:4px;}
+.early-proj .stack{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-faint);margin-bottom:8px;}
+.early-proj p{font-size:12.5px;color:var(--text-dim);flex:1;margin-bottom:10px;}
+.early-proj-links{display:flex;gap:12px;}
+.early-proj-links a{font-size:12px;color:var(--text-dim);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .2s;}
+.early-proj-links a:hover{color:var(--accent);}
+.early-note{font-size:13px;color:var(--text-faint);margin-bottom:20px;max-width:560px;}
+
 .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
 .edu-card h3{font-size:15px;font-weight:600;margin-bottom:4px;}
@@ -189,7 +192,6 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 }
 @media(max-width:600px){.nav-links{display:none;}.hero{padding:60px 0 50px;}.edu-grid{grid-template-columns:1fr;}}
 
-/* === Nové animácie (pridané) === */
 #particle-canvas{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0.25;}
 .brand{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:filter 0.3s ease;}
 .brand:hover{filter:brightness(1.3) drop-shadow(0 0 8px var(--accent));}
@@ -331,14 +333,20 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 <div class="proj-grid" id="proj-grid"></div>
 </section>
 
+<section id="early-projects">
+<div class="sec-head reveal"><span class="sec-num"><svg class="sec-gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4l-2 .4a7 7 0 0 1-.6 1.5l1.2 1.7-1.4 1.4-1.7-1.2a7 7 0 0 1-1.5.6L14.4 19h-2l-.4-2a7 7 0 0 1-1.5-.6l-1.7 1.2-1.4-1.4 1.2-1.7a7 7 0 0 1-.6-1.5L5 12.6v-2l2-.4a7 7 0 0 1 .6-1.5L6.4 7l1.4-1.4 1.7 1.2a7 7 0 0 1 1.5-.6L11.6 4h2l.4 2a7 7 0 0 1 1.5.6l1.7-1.2L18.6 6.8l-1.2 1.7a7 7 0 0 1 .6 1.5l2 .4z" fill="none" stroke="#2f81f7" stroke-width="1.4"/></svg>04</span><h2 data-i18n="sec_early">Rané práce</h2><div class="rule"></div></div>
+<p class="early-note reveal" data-i18n="early_note">Prvé kroky vo webdevelopmente — jednoduché statické stránky pre reálnych klientov.</p>
+<div class="early-proj-grid" id="early-proj-grid"></div>
+</section>
+
 <section id="edu">
-<div class="sec-head reveal"><span class="sec-num"><svg class="sec-gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4l-2 .4a7 7 0 0 1-.6 1.5l1.2 1.7-1.4 1.4-1.7-1.2a7 7 0 0 1-1.5.6L14.4 19h-2l-.4-2a7 7 0 0 1-1.5-.6l-1.7 1.2-1.4-1.4 1.2-1.7a7 7 0 0 1-.6-1.5L5 12.6v-2l2-.4a7 7 0 0 1 .6-1.5L6.4 7l1.4-1.4 1.7 1.2a7 7 0 0 1 1.5-.6L11.6 4h2l.4 2a7 7 0 0 1 1.5.6l1.7-1.2L18.6 6.8l-1.2 1.7a7 7 0 0 1 .6 1.5l2 .4z" fill="none" stroke="#2f81f7" stroke-width="1.4"/></svg>04</span><h2 data-i18n="sec_edu">Vzdelanie &amp; certifikáty</h2><div class="rule"></div></div>
+<div class="sec-head reveal"><span class="sec-num"><svg class="sec-gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4l-2 .4a7 7 0 0 1-.6 1.5l1.2 1.7-1.4 1.4-1.7-1.2a7 7 0 0 1-1.5.6L14.4 19h-2l-.4-2a7 7 0 0 1-1.5-.6l-1.7 1.2-1.4-1.4 1.2-1.7a7 7 0 0 1-.6-1.5L5 12.6v-2l2-.4a7 7 0 0 1 .6-1.5L6.4 7l1.4-1.4 1.7 1.2a7 7 0 0 1 1.5-.6L11.6 4h2l.4 2a7 7 0 0 1 1.5.6l1.7-1.2L18.6 6.8l-1.2 1.7a7 7 0 0 1 .6 1.5l2 .4z" fill="none" stroke="#2f81f7" stroke-width="1.4"/></svg>05</span><h2 data-i18n="sec_edu">Vzdelanie &amp; certifikáty</h2><div class="rule"></div></div>
 <div class="edu-grid reveal" id="edu-grid" style="margin-bottom:18px;"></div>
 <div class="cert-list reveal" id="cert-list"></div>
 </section>
 
 <section id="contact">
-<div class="sec-head reveal"><span class="sec-num"><svg class="sec-gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4l-2 .4a7 7 0 0 1-.6 1.5l1.2 1.7-1.4 1.4-1.7-1.2a7 7 0 0 1-1.5.6L14.4 19h-2l-.4-2a7 7 0 0 1-1.5-.6l-1.7 1.2-1.4-1.4 1.2-1.7a7 7 0 0 1-.6-1.5L5 12.6v-2l2-.4a7 7 0 0 1 .6-1.5L6.4 7l1.4-1.4 1.7 1.2a7 7 0 0 1 1.5-.6L11.6 4h2l.4 2a7 7 0 0 1 1.5.6l1.7-1.2L18.6 6.8l-1.2 1.7a7 7 0 0 1 .6 1.5l2 .4z" fill="none" stroke="#2f81f7" stroke-width="1.4"/></svg>05</span><h2 data-i18n="sec_contact">Kontakt</h2><div class="rule"></div></div>
+<div class="sec-head reveal"><span class="sec-num"><svg class="sec-gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4l-2 .4a7 7 0 0 1-.6 1.5l1.2 1.7-1.4 1.4-1.7-1.2a7 7 0 0 1-1.5.6L14.4 19h-2l-.4-2a7 7 0 0 1-1.5-.6l-1.7 1.2-1.4-1.4 1.2-1.7a7 7 0 0 1-.6-1.5L5 12.6v-2l2-.4a7 7 0 0 1 .6-1.5L6.4 7l1.4-1.4 1.7 1.2a7 7 0 0 1 1.5-.6L11.6 4h2l.4 2a7 7 0 0 1 1.5.6l1.7-1.2L18.6 6.8l-1.2 1.7a7 7 0 0 1 .6 1.5l2 .4z" fill="none" stroke="#2f81f7" stroke-width="1.4"/></svg>06</span><h2 data-i18n="sec_contact">Kontakt</h2><div class="rule"></div></div>
 <p class="lead reveal" data-i18n="contact_lead" style="margin-bottom:24px;">Otvorený novým príležitostiam. Ozvite sa.</p>
 <div class="contact-row reveal">
 <a class="cbtn" href="mailto:lipnicanmilos@gmail.com"><span class="ic">✉</span> lipnicanmilos@gmail.com</a>
@@ -388,26 +396,30 @@ live:"", code:"" },
 { icon:"▦", name:"Report Automation", stack:"Perl · Oracle · SQL*Loader",
 sk:"Denné generovanie Oracle reportov a ich e-mailová distribúcia; dátový pipeline s extrakciou dát cez SQL*Loader.",
 en:"Daily Oracle report generation and email distribution; data pipeline extracting data via SQL*Loader.",
-live:"", code:"" },
+live:"", code:"" }
+
+];
+
+var EARLY_PROJECTS = [
 
 { icon:"❖", name:"eMeM CarWash Senec", stack:"HTML5 · CSS3 · JavaScript · Bootstrap",
-sk:"Jednostránkový web ručnej autoumyvárne – responzívny slider, filtrovateľná portfólio galéria a kontaktný formulár s mapou.",
-en:"One-page website for a hand car wash — responsive slider, filterable portfolio gallery, and a contact form with map.",
+sk:"Jednostránkový web ručnej autoumyvárne s galériou a kontaktným formulárom.",
+en:"One-page website for a hand car wash, with a gallery and contact form.",
 live:"https://lipnicanmilos.github.io/AutoService/CarWash/index.html", code:"https://github.com/Lipnicanmilos/AutoService/tree/main/CarWash" },
 
 { icon:"⚙", name:"eMeM Garage — Autoservis Senec", stack:"HTML5 · CSS3 · JavaScript · Bootstrap · PHP",
-sk:"Web autoservisu a pneuservisu s prehľadom služieb, cenníkom na stiahnutie a PHP kontaktným formulárom.",
-en:"Website for a car repair and tire service, featuring a service overview, a downloadable price list, and a PHP contact form.",
+sk:"Web autoservisu a pneuservisu s cenníkom na stiahnutie a PHP kontaktným formulárom.",
+en:"Website for a car repair and tire service, with a downloadable price list and PHP contact form.",
 live:"https://lipnicanmilos.github.io/AutoService/", code:"https://github.com/Lipnicanmilos/AutoService" },
 
 { icon:"◑", name:"Jasličky Adamkovo", stack:"HTML5 · CSS3 · JavaScript",
-sk:"Web súkromných jasličiek v Žiline s denným režimom, cenníkom na stiahnutie a fotogalériou.",
-en:"Website for a private nursery in Žilina, featuring a daily schedule, a downloadable price list, and a photo gallery.",
+sk:"Web súkromných jasličiek v Žiline s denným režimom a fotogalériou.",
+en:"Website for a private nursery in Žilina, with a daily schedule and photo gallery.",
 live:"https://lipnicanmilos.github.io/jaslickyadamkovo/", code:"https://github.com/Lipnicanmilos/jaslickyadamkovo" },
 
 { icon:"◫", name:"Jedáleň D&M", stack:"HTML5 · CSS3 · JavaScript",
-sk:"Statická webová stránka reštaurácie – responzívny dizajn so sekciami menu, galérie a kontaktu, doplnená o lightbox galériu obrázkov.",
-en:"Static restaurant website — responsive design with menu, gallery, and contact sections, featuring an image lightbox gallery.",
+sk:"Statická webová stránka reštaurácie s menu, galériou a kontaktom.",
+en:"Static restaurant website with menu, gallery, and contact sections.",
 live:"https://lipnicanmilos.github.io/restaurant/", code:"https://github.com/Lipnicanmilos/restaurant" }
 
 ];
@@ -427,8 +439,9 @@ nav_skills:"Technológie", nav_exp:"Prax", nav_projects:"Projekty", nav_contact:
 hero_grad:"Automatizácia & IT podpora",
 hero_lead:"Špecialista na IT podporu a vývoj s viac ako 7-ročnou praxou v správe mýtnych a diaľničných systémov. Spájam expertízu v troubleshootingu a databázach s automatizáciou v Pythone, aktuálne so zameraním na backend development a AI.",
 cta_cv:"Stiahnuť CV", cta_ref:"Referencia (PDF)",
-sec_skills:"Technológie", sec_exp:"Pracovné skúsenosti", sec_projects:"Projekty", sec_edu:"Vzdelanie & certifikáty", sec_contact:"Kontakt",
+sec_skills:"Technológie", sec_exp:"Pracovné skúsenosti", sec_projects:"Projekty", sec_early:"Rané práce", sec_edu:"Vzdelanie & certifikáty", sec_contact:"Kontakt",
 sk_lang:"Jazyky & frameworky", sk_data:"Databázy", sk_cloud:"Cloud & CI/CD", sk_ops:"Monitoring & nástroje", sk_web:"Full-stack",
+early_note:"Prvé kroky vo webdevelopmente — jednoduché statické stránky pre reálnych klientov.",
 contact_lead:"Otvorený novým príležitostiam. Ozvite sa.",
 footer_built:"statická stránka na GitHub Pages",
 live:"Web", code:"Kód",
@@ -439,8 +452,9 @@ nav_skills:"Skills", nav_exp:"Experience", nav_projects:"Projects", nav_contact:
 hero_grad:"Automation & IT Support",
 hero_lead:"IT support and development specialist with 7+ years of experience managing toll and highway systems. I combine troubleshooting and database expertise with Python automation, currently focused on backend development and AI.",
 cta_cv:"Download CV", cta_ref:"Reference (PDF)",
-sec_skills:"Skills", sec_exp:"Work Experience", sec_projects:"Projects", sec_edu:"Education & Certificates", sec_contact:"Contact",
+sec_skills:"Skills", sec_exp:"Work Experience", sec_projects:"Projects", sec_early:"Early work", sec_edu:"Education & Certificates", sec_contact:"Contact",
 sk_lang:"Languages & frameworks", sk_data:"Databases", sk_cloud:"Cloud & CI/CD", sk_ops:"Monitoring & tools", sk_web:"Full-stack",
+early_note:"First steps in web development — simple static sites for real clients.",
 contact_lead:"Open to new opportunities. Let's talk.",
 footer_built:"static site on GitHub Pages",
 live:"Live", code:"Code",
@@ -464,6 +478,15 @@ if(p.code) links+='<a href="'+p.code+'" target="_blank" rel="noopener"><span cla
 return '<article class="proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+(lang==="sk"?p.sk:p.en)+'</p><div class="proj-links">'+links+'</div></article>';
 }).join("");
 }
+function renderEarlyProjects(){
+var t=I18N[lang];
+document.getElementById("early-proj-grid").innerHTML = EARLY_PROJECTS.map(function(p){
+var links="";
+if(p.live) links+='<a href="'+p.live+'" target="_blank" rel="noopener"><span class="ic">↗</span>'+t.live+'</a>';
+if(p.code) links+='<a href="'+p.code+'" target="_blank" rel="noopener"><span class="ic">⌨</span>'+t.code+'</a>';
+return '<article class="early-proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+(lang==="sk"?p.sk:p.en)+'</p><div class="early-proj-links">'+links+'</div></article>';
+}).join("");
+}
 function renderEdu(){
 document.getElementById("edu-grid").innerHTML = EDU.map(function(e){
 return '<div class="edu-card"><h3>'+(lang==="sk"?e.sk:e.en)+'</h3><div class="meta">'+e.meta+'</div><p>'+(lang==="sk"?e.sk_d:e.en_d)+'</p></div>';
@@ -480,7 +503,7 @@ var k=el.getAttribute("data-i18n"); if(t[k]) el.textContent=t[k];
 });
 document.getElementById("bt-sk").classList.toggle("on", l==="sk");
 document.getElementById("bt-en").classList.toggle("on", l==="en");
-renderTimeline(); renderProjects(); renderEdu(); startTyping();
+renderTimeline(); renderProjects(); renderEarlyProjects(); renderEdu(); startTyping();
 }
 var typeTimer=null, typeState={line:0,char:0,deleting:false};
 function startTyping(){ if(typeTimer)clearTimeout(typeTimer); typeState={line:0,char:0,deleting:false}; typeLoop(); }
@@ -503,7 +526,6 @@ document.getElementById("bt-en").onclick=function(){applyLang("en");};
 applyLang("sk");
 initReveal();
 
-/* --- JS len pre scroll progress + synchronizáciu textu štítku a uzlov --- */
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
   var prog = document.getElementById("scrollProg");
@@ -525,11 +547,11 @@ initReveal();
   var order = ["nUser","nPy","nDb","nAi","nCloud"];
   var els = order.map(function(id){ return document.getElementById(id); });
   var labels = ["GET /data","query()","INSERT","predict()","200 OK"];
-  var CYCLE = 5000; // ms, zhodné s CSS animáciou (5s)
+  var CYCLE = 5000;
   var t0 = performance.now();
 
   function tickSync(now){
-    var t = ((now - t0) % CYCLE) / CYCLE; // 0..1
+    var t = ((now - t0) % CYCLE) / CYCLE;
     var idx = Math.min(Math.floor(t * els.length), els.length-1);
     for(var i=0;i<els.length;i++){ els[i].classList.toggle("lit", i===idx); }
     if(commTag){
@@ -543,7 +565,6 @@ initReveal();
 </script>
 
 <script>
-/* Časticové pozadie */
 (function(){
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const canvas=document.getElementById('particle-canvas'); if(!canvas) return;
@@ -564,7 +585,6 @@ initReveal();
   }
   draw();
 })();
-/* Paralax bloby (myš) */
 (function(){
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const blobs=document.querySelectorAll('.blob'); if(!blobs.length) return;
