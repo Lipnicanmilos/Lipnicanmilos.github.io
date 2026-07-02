@@ -278,7 +278,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 <div class="typed reveal" id="typed"><span class="cursor">&nbsp;</span></div>
 <p class="lead reveal" data-i18n="hero_lead">Špecialista na IT podporu a vývoj s viac ako 7-ročnou praxou v správe mýtnych a diaľničných systémov. Spájam expertízu v troubleshootingu a databázach s automatizáciou v Pythone, aktuálne so zameraním na backend development a AI.</p>
 <div class="cta-row reveal">
-<a class="btn primary" href="CV_Milos_Lipnican.pdf" download><span data-i18n="cta_cv">Stiahnuť CV</span> ↓</a>
+<a class="btn primary" id="cvLink" href="CV_Milos_Lipnican.pdf" download><span data-i18n="cta_cv">Stiahnuť CV</span> ↓</a>
 <a class="btn ghost" href="Referencia_SkyToll.pdf" download data-i18n="cta_ref">Referencia (PDF)</a>
 <a class="btn ghost" href="https://github.com/Lipnicanmilos" target="_blank" rel="noopener">GitHub</a>
 </div>
@@ -613,6 +613,8 @@ var k=el.getAttribute("data-i18n"); if(t[k]) el.textContent=t[k];
 document.getElementById("bt-sk").classList.toggle("on", l==="sk");
 document.getElementById("bt-en").classList.toggle("on", l==="en");
 document.getElementById("bt-de").classList.toggle("on", l==="de");
+// CV na stiahnutie podľa jazyka (DE zatiaľ zdieľa anglickú verziu)
+document.getElementById("cvLink").href = (l==="sk") ? "CV_Milos_Lipnican.pdf" : "CV_Milos_Lipnican_EN.pdf";
 renderTimeline(); renderProjects(); renderEarlyProjects(); renderEdu(); renderLangs(); startTyping();
 }
 var typeTimer=null, typeState={line:0,char:0,deleting:false};
