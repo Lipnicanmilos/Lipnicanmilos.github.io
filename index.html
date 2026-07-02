@@ -400,6 +400,11 @@ sk:"Interný nástroj (framework Django) na automatizáciu reportingu a monitori
 en:"Internal tool (Django framework) for reporting & monitoring automation. Scheduled jobs (APScheduler) generate daily/weekly Excel (openpyxl, XlsxWriter, pandas) and PDF (ReportLab, xhtml2pdf) reports, parse server logs fetched over SSH (Paramiko), connect to Oracle (cx_Oracle) and SQL Server (pyodbc) databases, and integrate JIRA (jira library + REST API) and SharePoint (Office365). Automated daily invoice/toll reports, marketing stats, submissions, PAYWELL, inactivity reports, and rating monitoring with JIRA notifications.",
 live:"", code:"https://github.com/Lipnicanmilos/Tracking_Projects_Pulse" },
 
+{ icon:"◩", name:"Job Scraper (py_profesia)", stack:"Python · requests · BeautifulSoup · Selenium · SQLite · AWS (Lambda · DynamoDB · SES)",
+sk:"Automatizovaný scraper pracovných ponúk z Profesia.sk a LinkedIn. Sťahuje a filtruje pozície podľa kľúčových slov (requests + BeautifulSoup, LinkedIn cez Selenium s prihlásením cez session cookie), deduplikuje a ukladá do SQLite, sleduje oslovené firmy a otvára nové ponuky v prehliadači. Voliteľne synchronizuje dáta do AWS DynamoDB (boto3) a beží denne cez AWS Lambda + EventBridge s e-mailovým reportom cez SES. Tajomstvá sú mimo repa (.env), boto3 default credentials.",
+en:"Automated job-posting scraper for Profesia.sk and LinkedIn. Fetches and filters positions by keywords (requests + BeautifulSoup, LinkedIn via Selenium with session-cookie login), deduplicates and stores them in SQLite, tracks contacted employers, and opens new postings in the browser. Optionally syncs data to AWS DynamoDB (boto3) and runs daily via AWS Lambda + EventBridge with an email report through SES. Secrets kept out of the repo (.env), boto3 default credentials.",
+live:"", code:"https://github.com/Lipnicanmilos/py_profesia" },
+
 { icon:"▩", name:"VocabMaster", stack:"Litestar · SQLAlchemy · Jinja2 · JWT",
 sk:"Webová appka na učenie slovíčok — používatelia, kategórie, slovíčka s úrovňami znalosti, testovací režim a import z Excelu; JWT + bcrypt autentifikácia.",
 en:"Vocabulary-learning web app — users, categories, words with proficiency levels, a testing mode, and Excel import; JWT + bcrypt auth.",
