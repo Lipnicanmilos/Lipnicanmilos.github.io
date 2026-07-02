@@ -230,6 +230,15 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 @keyframes cta-pulse{0%{box-shadow:0 0 0 0 rgba(47,129,247,0.5);}70%{box-shadow:0 0 0 12px rgba(47,129,247,0);}100%{box-shadow:0 0 0 0 rgba(47,129,247,0);}}
 .blob{transition:transform 0.8s ease-out;}
 @media (prefers-reduced-motion:reduce){.blob{transition:none;}.btn.primary{animation:none;}}
+/* Dotykové zariadenia: tap nemá "hover", tak neaplikuj lepivé hover transformácie */
+@media (hover:none){
+  .btn.primary:hover,.btn.ghost:hover,.cbtn:hover{transform:none;}
+  .proj:hover{transform:none;box-shadow:none;border-color:var(--border);}
+  .proj:hover .pic{transform:none;}
+  .early-proj:hover{transform:none;}
+  .node:hover .node-box{transform:none;animation-play-state:running;}
+  .brand:hover{filter:none;}
+}
 </style>
 </head>
 <body>
@@ -680,6 +689,8 @@ initReveal();
 <script>
 (function(){
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Dotykové zariadenia: častice vypni (výkon/batéria) — sú len dekoratívne.
+  if(window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
   const canvas=document.getElementById('particle-canvas'); if(!canvas) return;
   const ctx=canvas.getContext('2d'); let w,h,particles=[]; const maxParts=50;
   function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
