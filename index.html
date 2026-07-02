@@ -238,6 +238,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 <div class="lang">
 <button id="bt-sk" class="on">SK</button>
 <button id="bt-en">EN</button>
+<button id="bt-de">DE</button>
 </div>
 </div>
 </div>
@@ -374,18 +375,21 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 
 <script>
 var EXP = [
-{ sk:"Senior Špecialista údržby a podpory IT aplikácií", en:"Senior IT Application Support & Maintenance Specialist",
-meta:"SkyToll, a. s. · 02/2021 – ", metaNow:{sk:"súčasnosť",en:"present"},
+{ sk:"Senior Špecialista údržby a podpory IT aplikácií", en:"Senior IT Application Support & Maintenance Specialist", de:"Senior-Spezialist für Wartung und Support von IT-Anwendungen",
+meta:"SkyToll, a. s. · 02/2021 – ", metaNow:{sk:"súčasnosť",en:"present",de:"heute"},
 sk_desc:"Application ownership pridelených aplikácií, riadenie krízovej komunikácie počas incidentov, hĺbkové analýzy príčin, správa IT infraštruktúry v súlade s SLA a konfigurácia monitoringu v Zabbix.",
-en_desc:"Application ownership of assigned systems, crisis communication during incidents, root-cause analysis, IT infrastructure management within SLA, and Zabbix monitoring configuration." },
-{ sk:"Junior Špecialista údržby a podpory IT aplikácií", en:"Junior IT Application Support Specialist",
+en_desc:"Application ownership of assigned systems, crisis communication during incidents, root-cause analysis, IT infrastructure management within SLA, and Zabbix monitoring configuration.",
+de_desc:"Application Ownership zugewiesener Anwendungen, Steuerung der Krisenkommunikation bei Vorfällen, Ursachenanalysen, Verwaltung der IT-Infrastruktur gemäß SLA und Konfiguration des Monitorings in Zabbix." },
+{ sk:"Junior Špecialista údržby a podpory IT aplikácií", en:"Junior IT Application Support Specialist", de:"Junior-Spezialist für Wartung und Support von IT-Anwendungen",
 meta:"SkyToll, a. s. · 06/2019 – 01/2021",
 sk_desc:"L2 podpora a hĺbková diagnostika cez analýzu logov, databázové operácie (Oracle, PostgreSQL), automatizácia tímových procesov a reportingu v Pythone a Django.",
-en_desc:"L2 support and deep diagnostics via log analysis, database operations (Oracle, PostgreSQL), and automation of team processes and reporting in Python and Django." },
-{ sk:"Pracovník manuálnej identifikácie incidentov", en:"Manual Incident Identification Specialist",
+en_desc:"L2 support and deep diagnostics via log analysis, database operations (Oracle, PostgreSQL), and automation of team processes and reporting in Python and Django.",
+de_desc:"L2-Support und Tiefendiagnose durch Log-Analyse, Datenbankoperationen (Oracle, PostgreSQL) sowie Automatisierung von Teamprozessen und Reporting in Python und Django." },
+{ sk:"Pracovník manuálnej identifikácie incidentov", en:"Manual Incident Identification Specialist", de:"Mitarbeiter für manuelle Vorfallidentifikation",
 meta:"SkyToll, a. s. · 04/2018 – 05/2019",
 sk_desc:"Analýza a kontrola údajov z mýtnych brán z fotografických záznamov, dopĺňanie a oprava neúplných záznamov.",
-en_desc:"Analysis and validation of toll-gate data from photographic records, completing and correcting incomplete entries." }
+en_desc:"Analysis and validation of toll-gate data from photographic records, completing and correcting incomplete entries.",
+de_desc:"Analyse und Kontrolle von Daten aus Mautbrücken anhand von Fotoaufnahmen, Ergänzung und Korrektur unvollständiger Einträge." }
 ];
   
 var PROJECTS = [
@@ -393,41 +397,49 @@ var PROJECTS = [
 { icon:"❑", name:"Lexinova (FastAPI)", stack:"FastAPI · PostgreSQL · AI / LLM · PWA · Cloud Run",
 sk:"Môj najnovší projekt — asynchrónna backend architektúra v FastAPI (Type Hinting, Pydantic) s integráciou AI (LLM), návrh PostgreSQL databázy a automatizované CI/CD nasadenie do Google Cloud Run cez GitHub.",
 en:"My latest project — async backend architecture in FastAPI (type hinting, Pydantic) with AI (LLM) integration, PostgreSQL database design, and automated CI/CD deployment to Google Cloud Run via GitHub.",
+de:"Mein neuestes Projekt — asynchrone Backend-Architektur in FastAPI (Type Hinting, Pydantic) mit KI-Integration (LLM), Design der PostgreSQL-Datenbank und automatisiertes CI/CD-Deployment auf Google Cloud Run über GitHub.",
 live:"https://lexinova-1096007793591.us-central1.run.app/", code:"https://github.com/Lipnicanmilos/lexinova" },
 
 { icon:"◲", name:"Tracking Projects Pulse (Django)", stack:"Django · APScheduler · cx_Oracle · pyodbc · Paramiko · ReportLab · pandas · JIRA",
 sk:"Interný nástroj (framework Django) na automatizáciu reportingu a monitoringu. Plánované úlohy (APScheduler) generujú denné/týždenné reporty v Exceli (openpyxl, XlsxWriter, pandas) a PDF (ReportLab, xhtml2pdf). Parsujem serverové logy sťahované cez SSH (Paramiko), pripájam sa na databázy Oracle (cx_Oracle) a SQL Server (pyodbc) a integrujem JIRA (knižnica jira + REST API) a SharePoint (Office365). Automatizoval som denné faktúry a mýtne reporty, marketingové štatistiky, EDZ podania, PAYWELL, inactivity reporty a monitoring oceňovania s notifikáciami do JIRA.",
 en:"Internal tool (Django framework) for reporting & monitoring automation. Scheduled jobs (APScheduler) generate daily/weekly Excel (openpyxl, XlsxWriter, pandas) and PDF (ReportLab, xhtml2pdf) reports, parse server logs fetched over SSH (Paramiko), connect to Oracle (cx_Oracle) and SQL Server (pyodbc) databases, and integrate JIRA (jira library + REST API) and SharePoint (Office365). Automated daily invoice/toll reports, marketing stats, submissions, PAYWELL, inactivity reports, and rating monitoring with JIRA notifications.",
+de:"Internes Tool (Django-Framework) zur Automatisierung von Reporting und Monitoring. Geplante Aufgaben (APScheduler) erzeugen tägliche/wöchentliche Excel- (openpyxl, XlsxWriter, pandas) und PDF-Berichte (ReportLab, xhtml2pdf), parsen über SSH (Paramiko) heruntergeladene Serverlogs, verbinden sich mit Oracle- (cx_Oracle) und SQL-Server-Datenbanken (pyodbc) und integrieren JIRA (jira-Bibliothek + REST API) und SharePoint (Office365). Automatisiert wurden tägliche Rechnungs- und Mautberichte, Marketingstatistiken, EDZ-Einreichungen, PAYWELL, Inaktivitätsberichte und das Rating-Monitoring mit JIRA-Benachrichtigungen.",
 live:"", code:"https://github.com/Lipnicanmilos/Tracking_Projects_Pulse" },
 
 { icon:"◩", name:"Job Scraper (py_profesia)", stack:"Python · requests · BeautifulSoup · Selenium · SQLite · AWS (Lambda · DynamoDB · SES)",
 sk:"Automatizovaný scraper pracovných ponúk z Profesia.sk a LinkedIn. Sťahuje a filtruje pozície podľa kľúčových slov (requests + BeautifulSoup, LinkedIn cez Selenium s prihlásením cez session cookie), deduplikuje a ukladá do SQLite, sleduje oslovené firmy a otvára nové ponuky v prehliadači. Voliteľne synchronizuje dáta do AWS DynamoDB (boto3) a beží denne cez AWS Lambda + EventBridge s e-mailovým reportom cez SES. Tajomstvá sú mimo repa (.env), boto3 default credentials.",
 en:"Automated job-posting scraper for Profesia.sk and LinkedIn. Fetches and filters positions by keywords (requests + BeautifulSoup, LinkedIn via Selenium with session-cookie login), deduplicates and stores them in SQLite, tracks contacted employers, and opens new postings in the browser. Optionally syncs data to AWS DynamoDB (boto3) and runs daily via AWS Lambda + EventBridge with an email report through SES. Secrets kept out of the repo (.env), boto3 default credentials.",
+de:"Automatisierter Scraper für Stellenanzeigen von Profesia.sk und LinkedIn. Ruft Stellen anhand von Schlüsselwörtern ab und filtert sie (requests + BeautifulSoup, LinkedIn über Selenium mit Session-Cookie-Login), dedupliziert und speichert sie in SQLite, verfolgt kontaktierte Arbeitgeber und öffnet neue Anzeigen im Browser. Optional werden die Daten mit AWS DynamoDB (boto3) synchronisiert und täglich über AWS Lambda + EventBridge mit E-Mail-Report per SES ausgeführt. Secrets bleiben außerhalb des Repos (.env), boto3 Default-Credentials.",
 live:"", code:"https://github.com/Lipnicanmilos/py_profesia" },
 
 { icon:"◧", name:"Reminder API (FastAPI)", stack:"FastAPI · SQLAlchemy · Alembic · Pydantic · JWT (python-jose) · bcrypt",
 sk:"Backendová REST API vo FastAPI na správu používateľov a pripomienok/narodenín. JWT autentifikácia (OAuth2 Bearer, python-jose), hashovanie hesiel cez passlib/bcrypt, CRUD operácie, SQLAlchemy ORM (vzťah User ↔ Birthday) a Alembic migrácie. Každý používateľ spravuje len svoje pripomienky. Konfigurácia (SECRET_KEY, databáza) je mimo repa cez .env; automatická OpenAPI/Swagger dokumentácia na /docs.",
 en:"FastAPI backend REST API for managing users and reminders/birthdays. JWT authentication (OAuth2 Bearer, python-jose), password hashing via passlib/bcrypt, CRUD operations, SQLAlchemy ORM (User ↔ Birthday relationship), and Alembic migrations. Each user manages only their own reminders. Configuration (SECRET_KEY, database) kept out of the repo via .env; automatic OpenAPI/Swagger docs at /docs.",
+de:"Backend-REST-API in FastAPI zur Verwaltung von Benutzern und Erinnerungen/Geburtstagen. JWT-Authentifizierung (OAuth2 Bearer, python-jose), Passwort-Hashing mit passlib/bcrypt, CRUD-Operationen, SQLAlchemy ORM (Beziehung User ↔ Birthday) und Alembic-Migrationen. Jeder Benutzer verwaltet nur seine eigenen Erinnerungen. Die Konfiguration (SECRET_KEY, Datenbank) liegt außerhalb des Repos in der .env; automatische OpenAPI/Swagger-Dokumentation unter /docs.",
 live:"", code:"https://github.com/Lipnicanmilos/Reminder_fastapi" },
 
 { icon:"▩", name:"VocabMaster", stack:"Litestar · SQLAlchemy · Jinja2 · JWT",
 sk:"Webová appka na učenie slovíčok — používatelia, kategórie, slovíčka s úrovňami znalosti, testovací režim a import z Excelu; JWT + bcrypt autentifikácia.",
 en:"Vocabulary-learning web app — users, categories, words with proficiency levels, a testing mode, and Excel import; JWT + bcrypt auth.",
+de:"Web-App zum Vokabellernen — Benutzer, Kategorien, Vokabeln mit Kenntnisstufen, ein Testmodus und Excel-Import; JWT- + bcrypt-Authentifizierung.",
 live:"", code:"https://github.com/Lipnicanmilos/VocabMaster" },
 
 { icon:"◈", name:"Blog Flask App", stack:"Flask · SQLAlchemy · Flask-Login · Socket.IO",
 sk:"Blogovacia aplikácia s registráciou a prihlásením, príspevkami s rich-text editorom, komentármi, lajkami, resetom hesla cez e-mail a real-time chatom cez Socket.IO.",
 en:"Blogging application with registration and login, rich-text posts, comments, likes, email password reset, and real-time chat via Socket.IO.",
+de:"Blog-Anwendung mit Registrierung und Login, Beiträgen mit Rich-Text-Editor, Kommentaren, Likes, Passwort-Reset per E-Mail und Echtzeit-Chat über Socket.IO.",
 live:"", code:"https://github.com/Lipnicanmilos/Blog_flask_new" },
 
 { icon:"◉", name:"Django Weblog App", stack:"Django · CKEditor · Jazzmin · SQLite",
 sk:"Django aplikácia na správu blogových príspevkov s vlastným admin dashboardom (Jazzmin), rich-text editorom, registráciou používateľov a správou tímov/líg.",
 en:"Django application for managing blog posts with a custom admin dashboard (Jazzmin), rich-text editing, user registration, and team/league management.",
+de:"Django-Anwendung zur Verwaltung von Blog-Beiträgen mit eigenem Admin-Dashboard (Jazzmin), Rich-Text-Editor, Benutzerregistrierung und Team-/Liga-Verwaltung.",
 live:"", code:"https://github.com/Lipnicanmilos/Django_app" },
  
 { icon:"✎", name:"Flask Code Board", stack:"Flask · SQLAlchemy · SQLite",
 sk:"Appka na zdieľanie príspevkov s ukážkami kódu – registrácia, prihlásenie, komentáre a úprava vlastných príspevkov.",
 en:"App for sharing posts with code snippets — registration, login, comments, and editing of your own posts.",
+de:"App zum Teilen von Beiträgen mit Code-Snippets — Registrierung, Login, Kommentare und Bearbeiten eigener Beiträge.",
 live:"", code:"https://github.com/Lipnicanmilos/flask-code-board" }
 
 ];
@@ -437,32 +449,36 @@ var EARLY_PROJECTS = [
 { icon:"❖", name:"eMeM CarWash Senec", stack:"HTML5 · CSS3 · JavaScript · Bootstrap",
 sk:"Jednostránkový web ručnej autoumyvárne s galériou a kontaktným formulárom.",
 en:"One-page website for a hand car wash, with a gallery and contact form.",
+de:"Einseitige Website einer Handwäsche mit Galerie und Kontaktformular.",
 live:"https://lipnicanmilos.github.io/AutoService/CarWash/index.html", code:"https://github.com/Lipnicanmilos/AutoService/tree/main/CarWash" },
 
 { icon:"⚙", name:"eMeM Garage — Autoservis Senec", stack:"HTML5 · CSS3 · JavaScript · Bootstrap · PHP",
 sk:"Web autoservisu a pneuservisu s cenníkom na stiahnutie a PHP kontaktným formulárom.",
 en:"Website for a car repair and tire service, with a downloadable price list and PHP contact form.",
+de:"Website einer Kfz-Werkstatt und eines Reifenservice mit herunterladbarer Preisliste und PHP-Kontaktformular.",
 live:"https://lipnicanmilos.github.io/AutoService/", code:"https://github.com/Lipnicanmilos/AutoService" },
 
 { icon:"◑", name:"Jasličky Adamkovo", stack:"HTML5 · CSS3 · JavaScript",
 sk:"Web súkromných jasličiek v Žiline s denným režimom a fotogalériou.",
 en:"Website for a private nursery in Žilina, with a daily schedule and photo gallery.",
+de:"Website einer privaten Kinderkrippe in Žilina mit Tagesablauf und Fotogalerie.",
 live:"https://lipnicanmilos.github.io/jaslickyadamkovo/", code:"https://github.com/Lipnicanmilos/jaslickyadamkovo" },
 
 { icon:"◫", name:"Jedáleň D&M", stack:"HTML5 · CSS3 · JavaScript",
 sk:"Statická webová stránka reštaurácie s menu, galériou a kontaktom.",
 en:"Static restaurant website with menu, gallery, and contact sections.",
+de:"Statische Restaurant-Website mit Menü, Galerie und Kontaktbereich.",
 live:"https://lipnicanmilos.github.io/restaurant/", code:"https://github.com/Lipnicanmilos/restaurant" }
 
 ];
   
 var EDU = [
-{ sk:"Fakulta prevádzky a ekonomiky dopravy a spojov", en:"Faculty of Operation and Economics of Transport",
+{ sk:"Fakulta prevádzky a ekonomiky dopravy a spojov", en:"Faculty of Operation and Economics of Transport", de:"Fakultät für Betrieb und Ökonomie des Transports und der Kommunikation",
 meta:"Žilinská univerzita · 2016 – 2019",
-sk_d:"Odbor: Cestná doprava (Ing.)", en_d:"Field: Road transport (Ing.)" },
-{ sk:"Stredná priemyselná škola", en:"Technical Secondary School",
+sk_d:"Odbor: Cestná doprava (Ing.)", en_d:"Field: Road transport (Ing.)", de_d:"Fachrichtung: Straßenverkehr (Ing.)" },
+{ sk:"Stredná priemyselná škola", en:"Technical Secondary School", de:"Technische Fachoberschule",
 meta:"Tvrdošín · 2006 – 2010",
-sk_d:"Technické a informačné služby (TIS)", en_d:"Technical and Information Services (TIS)" }
+sk_d:"Technické a informačné služby (TIS)", en_d:"Technical and Information Services (TIS)", de_d:"Technische und Informationsdienste (TIS)" }
 ];
 var CERTS = ["ITIL 4 Foundation, PeopleCert","PL/SQL, Macrosoft s. r. o.","Linux v sieti, Macrosoft s. r. o."];
 var I18N = {
@@ -497,14 +513,30 @@ contact_lead:"Open to new opportunities. Let's talk.",
 footer_built:"static site on GitHub Pages",
 live:"Live", code:"Code",
 typed:["IT Application Support Specialist","Python & Perl automation","FastAPI · Cloud Run · Docker","AI integration · vibecoding · CLI","7+ years at SkyToll"]
+},
+de:{
+nav_skills:"Technologien", nav_exp:"Erfahrung", nav_projects:"Projekte", nav_contact:"Kontakt",
+hero_grad:"Automatisierung & IT-Support",
+hero_lead:"IT-Support- und Entwicklungsspezialist mit über 7 Jahren Erfahrung in der Verwaltung von Maut- und Autobahnsystemen. Ich verbinde Troubleshooting- und Datenbank-Expertise mit Automatisierung in Python und konzentriere mich derzeit auf Backend-Entwicklung und KI.",
+cta_cv:"Lebenslauf herunterladen", cta_ref:"Referenz (PDF)",
+sec_skills:"Technologien", sec_exp:"Berufserfahrung", sec_projects:"Projekte", sec_early:"Frühe Arbeiten", sec_edu:"Ausbildung & Zertifikate", sec_contact:"Kontakt",
+sk_lang:"Sprachen & Frameworks", sk_data:"Datenbanken", sk_cloud:"Cloud & CI/CD", sk_ops:"Monitoring & Tools", sk_web:"Full-Stack",
+sk_auto:"Automatisierung & Integrationen", sk_ai:"KI & Workflow",
+ref_quote:"„Er brachte proaktiv Vorschläge zur Verbesserung des Betriebs ein, insbesondere bei der Optimierung und Automatisierung manueller Prozesse sowie im Reporting und Monitoring. Er verfügte über ausgeprägtes analytisches Denken und Entwicklerfähigkeiten.“",
+ref_role:"Leiter des Application-Support-Teams, SkyToll", ref_pdf:"vollständige Referenz (PDF)",
+early_note:"Erste Schritte in der Webentwicklung — einfache statische Websites für echte Kunden.",
+contact_lead:"Offen für neue Möglichkeiten. Melden Sie sich.",
+footer_built:"statische Website auf GitHub Pages",
+live:"Live", code:"Code",
+typed:["IT Application Support Specialist","Python- & Perl-Automatisierung","FastAPI · Cloud Run · Docker","KI-Integration · Vibecoding · CLI","7+ Jahre bei SkyToll"]
 }
 };
 var lang = "sk";
 function renderTimeline(){
 document.getElementById("timeline").innerHTML = EXP.map(function(e){
 var meta = e.meta;
-if(e.metaNow) meta += (lang==="sk"?e.metaNow.sk:e.metaNow.en);
-return '<div class="tl-item reveal in"><div class="role">'+(lang==="sk"?e.sk:e.en)+'</div><div class="meta">'+meta+'</div><p>'+(lang==="sk"?e.sk_desc:e.en_desc)+'</p></div>';
+if(e.metaNow) meta += e.metaNow[lang];
+return '<div class="tl-item reveal in"><div class="role">'+e[lang]+'</div><div class="meta">'+meta+'</div><p>'+e[lang+"_desc"]+'</p></div>';
 }).join("");
 }
 function renderProjects(){
@@ -513,7 +545,7 @@ document.getElementById("proj-grid").innerHTML = PROJECTS.map(function(p){
 var links="";
 if(p.live) links+='<a href="'+p.live+'" target="_blank" rel="noopener"><span class="ic">↗</span>'+t.live+'</a>';
 if(p.code) links+='<a href="'+p.code+'" target="_blank" rel="noopener"><span class="ic">⌨</span>'+t.code+'</a>';
-return '<article class="proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+(lang==="sk"?p.sk:p.en)+'</p><div class="proj-links">'+links+'</div></article>';
+return '<article class="proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+p[lang]+'</p><div class="proj-links">'+links+'</div></article>';
 }).join("");
 }
 function renderEarlyProjects(){
@@ -522,12 +554,12 @@ document.getElementById("early-proj-grid").innerHTML = EARLY_PROJECTS.map(functi
 var links="";
 if(p.live) links+='<a href="'+p.live+'" target="_blank" rel="noopener"><span class="ic">↗</span>'+t.live+'</a>';
 if(p.code) links+='<a href="'+p.code+'" target="_blank" rel="noopener"><span class="ic">⌨</span>'+t.code+'</a>';
-return '<article class="early-proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+(lang==="sk"?p.sk:p.en)+'</p><div class="early-proj-links">'+links+'</div></article>';
+return '<article class="early-proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+p[lang]+'</p><div class="early-proj-links">'+links+'</div></article>';
 }).join("");
 }
 function renderEdu(){
 document.getElementById("edu-grid").innerHTML = EDU.map(function(e){
-return '<div class="edu-card"><h3>'+(lang==="sk"?e.sk:e.en)+'</h3><div class="meta">'+e.meta+'</div><p>'+(lang==="sk"?e.sk_d:e.en_d)+'</p></div>';
+return '<div class="edu-card"><h3>'+e[lang]+'</h3><div class="meta">'+e.meta+'</div><p>'+e[lang+"_d"]+'</p></div>';
 }).join("");
 document.getElementById("cert-list").innerHTML = CERTS.map(function(c){
 return '<div class="cert"><span class="ic">✓</span>'+c+'</div>';
@@ -541,6 +573,7 @@ var k=el.getAttribute("data-i18n"); if(t[k]) el.textContent=t[k];
 });
 document.getElementById("bt-sk").classList.toggle("on", l==="sk");
 document.getElementById("bt-en").classList.toggle("on", l==="en");
+document.getElementById("bt-de").classList.toggle("on", l==="de");
 renderTimeline(); renderProjects(); renderEarlyProjects(); renderEdu(); startTyping();
 }
 var typeTimer=null, typeState={line:0,char:0,deleting:false};
@@ -561,6 +594,7 @@ document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
 document.getElementById("year").textContent=new Date().getFullYear();
 document.getElementById("bt-sk").onclick=function(){applyLang("sk");};
 document.getElementById("bt-en").onclick=function(){applyLang("en");};
+document.getElementById("bt-de").onclick=function(){applyLang("de");};
 applyLang("sk");
 initReveal();
 
