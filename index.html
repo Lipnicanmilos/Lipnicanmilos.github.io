@@ -169,6 +169,7 @@ section{padding:54px 0;}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
 .proj{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:transform .22s,border-color .22s;}
 .proj:hover{transform:translateY(-4px);border-color:var(--accent);}
+.proj-cover{width:calc(100% + 44px);margin:-22px -22px 16px;aspect-ratio:2/1;object-fit:cover;display:block;border-radius:var(--radius) var(--radius) 0 0;border-bottom:1px solid var(--border);}
 .proj .pic{font-size:24px;color:var(--accent);margin-bottom:14px;transition:transform .5s ease;}
 .proj:hover .pic{transform:rotate(120deg);}
 .proj h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px;}
@@ -422,49 +423,49 @@ de_desc:"Analyse und Kontrolle von Daten aus Mautbrücken anhand von Fotoaufnahm
   
 var PROJECTS = [
 
-{ icon:"❑", name:"Lexinova (FastAPI)", stack:"FastAPI · PostgreSQL · AI / LLM · PWA · Cloud Run",
+{ icon:"❑", name:"Lexinova (FastAPI)", img:"assets/covers/lexinova.png", stack:"FastAPI · PostgreSQL · AI / LLM · PWA · Cloud Run",
 sk:"Môj najnovší projekt — asynchrónna backend architektúra v FastAPI (Type Hinting, Pydantic) s integráciou AI (LLM), návrh PostgreSQL databázy a automatizované CI/CD nasadenie do Google Cloud Run cez GitHub.",
 en:"My latest project — async backend architecture in FastAPI (type hinting, Pydantic) with AI (LLM) integration, PostgreSQL database design, and automated CI/CD deployment to Google Cloud Run via GitHub.",
 de:"Mein neuestes Projekt — asynchrone Backend-Architektur in FastAPI (Type Hinting, Pydantic) mit KI-Integration (LLM), Design der PostgreSQL-Datenbank und automatisiertes CI/CD-Deployment auf Google Cloud Run über GitHub.",
 live:"https://lexinova-1096007793591.us-central1.run.app/", code:"https://github.com/Lipnicanmilos/lexinova" },
 
-{ icon:"◲", name:"Tracking Projects Pulse (Django)", stack:"Django · APScheduler · cx_Oracle · pyodbc · Paramiko · ReportLab · pandas · JIRA",
+{ icon:"◲", name:"Tracking Projects Pulse (Django)", img:"assets/covers/tracking.png", stack:"Django · APScheduler · cx_Oracle · pyodbc · Paramiko · ReportLab · pandas · JIRA",
 sk:"Interný nástroj (framework Django) na automatizáciu reportingu a monitoringu. Plánované úlohy (APScheduler) generujú denné/týždenné reporty v Exceli (openpyxl, XlsxWriter, pandas) a PDF (ReportLab, xhtml2pdf). Parsujem serverové logy sťahované cez SSH (Paramiko), pripájam sa na databázy Oracle (cx_Oracle) a SQL Server (pyodbc) a integrujem JIRA (knižnica jira + REST API) a SharePoint (Office365). Automatizoval som denné faktúry a mýtne reporty, marketingové štatistiky, EDZ podania, PAYWELL, inactivity reporty a monitoring oceňovania s notifikáciami do JIRA.",
 en:"Internal tool (Django framework) for reporting & monitoring automation. Scheduled jobs (APScheduler) generate daily/weekly Excel (openpyxl, XlsxWriter, pandas) and PDF (ReportLab, xhtml2pdf) reports, parse server logs fetched over SSH (Paramiko), connect to Oracle (cx_Oracle) and SQL Server (pyodbc) databases, and integrate JIRA (jira library + REST API) and SharePoint (Office365). Automated daily invoice/toll reports, marketing stats, submissions, PAYWELL, inactivity reports, and rating monitoring with JIRA notifications.",
 de:"Internes Tool (Django-Framework) zur Automatisierung von Reporting und Monitoring. Geplante Aufgaben (APScheduler) erzeugen tägliche/wöchentliche Excel- (openpyxl, XlsxWriter, pandas) und PDF-Berichte (ReportLab, xhtml2pdf), parsen über SSH (Paramiko) heruntergeladene Serverlogs, verbinden sich mit Oracle- (cx_Oracle) und SQL-Server-Datenbanken (pyodbc) und integrieren JIRA (jira-Bibliothek + REST API) und SharePoint (Office365). Automatisiert wurden tägliche Rechnungs- und Mautberichte, Marketingstatistiken, EDZ-Einreichungen, PAYWELL, Inaktivitätsberichte und das Rating-Monitoring mit JIRA-Benachrichtigungen.",
 live:"", code:"https://github.com/Lipnicanmilos/Tracking_Projects_Pulse" },
 
-{ icon:"◩", name:"Job Scraper (py_profesia)", stack:"Python · requests · BeautifulSoup · Selenium · SQLite · AWS (Lambda · DynamoDB · SES)",
+{ icon:"◩", name:"Job Scraper (py_profesia)", img:"assets/covers/jobscraper.png", stack:"Python · requests · BeautifulSoup · Selenium · SQLite · AWS (Lambda · DynamoDB · SES)",
 sk:"Automatizovaný scraper pracovných ponúk z Profesia.sk a LinkedIn. Sťahuje a filtruje pozície podľa kľúčových slov (requests + BeautifulSoup, LinkedIn cez Selenium s prihlásením cez session cookie), deduplikuje a ukladá do SQLite, sleduje oslovené firmy a otvára nové ponuky v prehliadači. Voliteľne synchronizuje dáta do AWS DynamoDB (boto3) a beží denne cez AWS Lambda + EventBridge s e-mailovým reportom cez SES. Tajomstvá sú mimo repa (.env), boto3 default credentials.",
 en:"Automated job-posting scraper for Profesia.sk and LinkedIn. Fetches and filters positions by keywords (requests + BeautifulSoup, LinkedIn via Selenium with session-cookie login), deduplicates and stores them in SQLite, tracks contacted employers, and opens new postings in the browser. Optionally syncs data to AWS DynamoDB (boto3) and runs daily via AWS Lambda + EventBridge with an email report through SES. Secrets kept out of the repo (.env), boto3 default credentials.",
 de:"Automatisierter Scraper für Stellenanzeigen von Profesia.sk und LinkedIn. Ruft Stellen anhand von Schlüsselwörtern ab und filtert sie (requests + BeautifulSoup, LinkedIn über Selenium mit Session-Cookie-Login), dedupliziert und speichert sie in SQLite, verfolgt kontaktierte Arbeitgeber und öffnet neue Anzeigen im Browser. Optional werden die Daten mit AWS DynamoDB (boto3) synchronisiert und täglich über AWS Lambda + EventBridge mit E-Mail-Report per SES ausgeführt. Secrets bleiben außerhalb des Repos (.env), boto3 Default-Credentials.",
 live:"", code:"https://github.com/Lipnicanmilos/py_profesia" },
 
-{ icon:"◧", name:"Reminder API (FastAPI)", stack:"FastAPI · SQLAlchemy · Alembic · Pydantic · JWT (python-jose) · bcrypt",
+{ icon:"◧", name:"Reminder API (FastAPI)", img:"assets/covers/reminder.png", stack:"FastAPI · SQLAlchemy · Alembic · Pydantic · JWT (python-jose) · bcrypt",
 sk:"Backendová REST API vo FastAPI na správu používateľov a pripomienok/narodenín. JWT autentifikácia (OAuth2 Bearer, python-jose), hashovanie hesiel cez passlib/bcrypt, CRUD operácie, SQLAlchemy ORM (vzťah User ↔ Birthday) a Alembic migrácie. Každý používateľ spravuje len svoje pripomienky. Konfigurácia (SECRET_KEY, databáza) je mimo repa cez .env; automatická OpenAPI/Swagger dokumentácia na /docs.",
 en:"FastAPI backend REST API for managing users and reminders/birthdays. JWT authentication (OAuth2 Bearer, python-jose), password hashing via passlib/bcrypt, CRUD operations, SQLAlchemy ORM (User ↔ Birthday relationship), and Alembic migrations. Each user manages only their own reminders. Configuration (SECRET_KEY, database) kept out of the repo via .env; automatic OpenAPI/Swagger docs at /docs.",
 de:"Backend-REST-API in FastAPI zur Verwaltung von Benutzern und Erinnerungen/Geburtstagen. JWT-Authentifizierung (OAuth2 Bearer, python-jose), Passwort-Hashing mit passlib/bcrypt, CRUD-Operationen, SQLAlchemy ORM (Beziehung User ↔ Birthday) und Alembic-Migrationen. Jeder Benutzer verwaltet nur seine eigenen Erinnerungen. Die Konfiguration (SECRET_KEY, Datenbank) liegt außerhalb des Repos in der .env; automatische OpenAPI/Swagger-Dokumentation unter /docs.",
 live:"", code:"https://github.com/Lipnicanmilos/Reminder_fastapi" },
 
-{ icon:"▩", name:"VocabMaster", stack:"Litestar · SQLAlchemy · Jinja2 · JWT",
+{ icon:"▩", name:"VocabMaster", img:"assets/covers/vocabmaster.png", stack:"Litestar · SQLAlchemy · Jinja2 · JWT",
 sk:"Webová appka na učenie slovíčok — používatelia, kategórie, slovíčka s úrovňami znalosti, testovací režim a import z Excelu; JWT + bcrypt autentifikácia.",
 en:"Vocabulary-learning web app — users, categories, words with proficiency levels, a testing mode, and Excel import; JWT + bcrypt auth.",
 de:"Web-App zum Vokabellernen — Benutzer, Kategorien, Vokabeln mit Kenntnisstufen, ein Testmodus und Excel-Import; JWT- + bcrypt-Authentifizierung.",
 live:"", code:"https://github.com/Lipnicanmilos/VocabMaster" },
 
-{ icon:"◈", name:"Blog Flask App", stack:"Flask · SQLAlchemy · Flask-Login · Socket.IO",
+{ icon:"◈", name:"Blog Flask App", img:"assets/covers/blogflask.png", stack:"Flask · SQLAlchemy · Flask-Login · Socket.IO",
 sk:"Blogovacia aplikácia s registráciou a prihlásením, príspevkami s rich-text editorom, komentármi, lajkami, resetom hesla cez e-mail a real-time chatom cez Socket.IO.",
 en:"Blogging application with registration and login, rich-text posts, comments, likes, email password reset, and real-time chat via Socket.IO.",
 de:"Blog-Anwendung mit Registrierung und Login, Beiträgen mit Rich-Text-Editor, Kommentaren, Likes, Passwort-Reset per E-Mail und Echtzeit-Chat über Socket.IO.",
 live:"", code:"https://github.com/Lipnicanmilos/Blog_flask_new" },
 
-{ icon:"◉", name:"Django Weblog App", stack:"Django · CKEditor · Jazzmin · SQLite",
+{ icon:"◉", name:"Django Weblog App", img:"assets/covers/djangoweblog.png", stack:"Django · CKEditor · Jazzmin · SQLite",
 sk:"Django aplikácia na správu blogových príspevkov s vlastným admin dashboardom (Jazzmin), rich-text editorom, registráciou používateľov a správou tímov/líg.",
 en:"Django application for managing blog posts with a custom admin dashboard (Jazzmin), rich-text editing, user registration, and team/league management.",
 de:"Django-Anwendung zur Verwaltung von Blog-Beiträgen mit eigenem Admin-Dashboard (Jazzmin), Rich-Text-Editor, Benutzerregistrierung und Team-/Liga-Verwaltung.",
 live:"", code:"https://github.com/Lipnicanmilos/Django_app" },
  
-{ icon:"✎", name:"Flask Code Board", stack:"Flask · SQLAlchemy · SQLite",
+{ icon:"✎", name:"Flask Code Board", img:"assets/covers/codeboard.png", stack:"Flask · SQLAlchemy · SQLite",
 sk:"Appka na zdieľanie príspevkov s ukážkami kódu – registrácia, prihlásenie, komentáre a úprava vlastných príspevkov.",
 en:"App for sharing posts with code snippets — registration, login, comments, and editing of your own posts.",
 de:"App zum Teilen von Beiträgen mit Code-Snippets — Registrierung, Login, Kommentare und Bearbeiten eigener Beiträge.",
@@ -578,7 +579,7 @@ document.getElementById("proj-grid").innerHTML = PROJECTS.map(function(p){
 var links="";
 if(p.live) links+='<a href="'+p.live+'" target="_blank" rel="noopener"><span class="ic">↗</span>'+t.live+'</a>';
 if(p.code) links+='<a href="'+p.code+'" target="_blank" rel="noopener"><span class="ic">⌨</span>'+t.code+'</a>';
-return '<article class="proj reveal in"><div class="pic">'+p.icon+'</div><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+p[lang]+'</p><div class="proj-links">'+links+'</div></article>';
+return '<article class="proj reveal in"><img class="proj-cover" src="'+p.img+'" alt="'+p.name+'" loading="lazy"><h3>'+p.name+'</h3><div class="stack">'+p.stack+'</div><p>'+p[lang]+'</p><div class="proj-links">'+links+'</div></article>';
 }).join("");
 }
 function renderEarlyProjects(){
