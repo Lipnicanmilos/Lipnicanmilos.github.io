@@ -405,6 +405,11 @@ sk:"Automatizovaný scraper pracovných ponúk z Profesia.sk a LinkedIn. Sťahuj
 en:"Automated job-posting scraper for Profesia.sk and LinkedIn. Fetches and filters positions by keywords (requests + BeautifulSoup, LinkedIn via Selenium with session-cookie login), deduplicates and stores them in SQLite, tracks contacted employers, and opens new postings in the browser. Optionally syncs data to AWS DynamoDB (boto3) and runs daily via AWS Lambda + EventBridge with an email report through SES. Secrets kept out of the repo (.env), boto3 default credentials.",
 live:"", code:"https://github.com/Lipnicanmilos/py_profesia" },
 
+{ icon:"◧", name:"Reminder API (FastAPI)", stack:"FastAPI · SQLAlchemy · Alembic · Pydantic · JWT (python-jose) · bcrypt",
+sk:"Backendová REST API vo FastAPI na správu používateľov a pripomienok/narodenín. JWT autentifikácia (OAuth2 Bearer, python-jose), hashovanie hesiel cez passlib/bcrypt, CRUD operácie, SQLAlchemy ORM (vzťah User ↔ Birthday) a Alembic migrácie. Každý používateľ spravuje len svoje pripomienky. Konfigurácia (SECRET_KEY, databáza) je mimo repa cez .env; automatická OpenAPI/Swagger dokumentácia na /docs.",
+en:"FastAPI backend REST API for managing users and reminders/birthdays. JWT authentication (OAuth2 Bearer, python-jose), password hashing via passlib/bcrypt, CRUD operations, SQLAlchemy ORM (User ↔ Birthday relationship), and Alembic migrations. Each user manages only their own reminders. Configuration (SECRET_KEY, database) kept out of the repo via .env; automatic OpenAPI/Swagger docs at /docs.",
+live:"", code:"https://github.com/Lipnicanmilos/Reminder_fastapi" },
+
 { icon:"▩", name:"VocabMaster", stack:"Litestar · SQLAlchemy · Jinja2 · JWT",
 sk:"Webová appka na učenie slovíčok — používatelia, kategórie, slovíčka s úrovňami znalosti, testovací režim a import z Excelu; JWT + bcrypt autentifikácia.",
 en:"Vocabulary-learning web app — users, categories, words with proficiency levels, a testing mode, and Excel import; JWT + bcrypt auth.",
