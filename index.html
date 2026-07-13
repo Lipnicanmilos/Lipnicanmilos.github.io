@@ -229,7 +229,10 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 .btn.primary{animation:cta-pulse 2.5s ease-in-out infinite;box-shadow:0 0 0 0 rgba(47,129,247,0.4);}
 @keyframes cta-pulse{0%{box-shadow:0 0 0 0 rgba(47,129,247,0.5);}70%{box-shadow:0 0 0 12px rgba(47,129,247,0);}100%{box-shadow:0 0 0 0 rgba(47,129,247,0);}}
 .blob{transition:transform 0.8s ease-out;}
-@media (prefers-reduced-motion:reduce){.blob{transition:none;}.btn.primary{animation:none;}}
+
+/* 3D valec: sekcie sú panely na rotujúcom bubne, scroll ich vytáča dopredu */
+.cyl{will-change:transform,opacity;transform-origin:50% 50%;backface-visibility:hidden;}
+@media (prefers-reduced-motion:reduce){.blob{transition:none;}.btn.primary{animation:none;}.cyl{transform:none!important;opacity:1!important;}}
 /* Dotykové zariadenia: tap nemá "hover", tak neaplikuj lepivé hover transformácie */
 @media (hover:none){
   .btn.primary:hover,.btn.ghost:hover,.cbtn:hover{transform:none;}
@@ -708,6 +711,40 @@ initReveal();
     requestAnimationFrame(draw);
   }
   draw();
+})();
+(function(){
+  // 3D valec — sekcie ako panely na bubne rotujúcom pri scrolle
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var secs = Array.prototype.slice.call(document.querySelectorAll("main > section"));
+  if(!secs.length) return;
+  secs.forEach(function(s){ s.classList.add("cyl"); });
+  var MAX_ROT = 34;    // max naklonenie panelu (stupne)
+  var DEPTH   = 150;   // max posun dozadu (px)
+  var ticking = false;
+  function apply(){
+    ticking = false;
+    var vh = window.innerHeight;
+    for(var i=0;i<secs.length;i++){
+      var s = secs[i];
+      var r = s.getBoundingClientRect();
+      if(r.bottom < 0 || r.top > vh){ s.style.transform=""; s.style.opacity=""; continue; }
+      var center = r.top + r.height/2;
+      // p: 1 = sekcia dole pod viewportom, 0 = v strede, -1 = hore nad viewportom
+      var p = (center - vh/2) / (vh/2 + r.height/2);
+      p = Math.max(-1, Math.min(1, p));
+      var rot = -p * MAX_ROT;
+      var z = -Math.abs(p) * DEPTH;
+      // rotácia okolo hrany: pri vstupe zospodu okolo hornej, pri odchode okolo dolnej
+      // (rotácia okolo stredu by pri vysokých sekciách vystrelila okraj pred kameru)
+      s.style.transformOrigin = (p > 0) ? "50% 0%" : "50% 100%";
+      s.style.transform = "perspective(1100px) translateZ("+z.toFixed(1)+"px) rotateX("+rot.toFixed(2)+"deg)";
+      s.style.opacity = (1 - Math.abs(p)*0.45).toFixed(3);
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(apply); } }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll);
+  apply();
 })();
 (function(){
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
