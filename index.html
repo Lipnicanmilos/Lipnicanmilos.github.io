@@ -229,17 +229,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 .btn.primary{animation:cta-pulse 2.5s ease-in-out infinite;box-shadow:0 0 0 0 rgba(47,129,247,0.4);}
 @keyframes cta-pulse{0%{box-shadow:0 0 0 0 rgba(47,129,247,0.5);}70%{box-shadow:0 0 0 12px rgba(47,129,247,0);}100%{box-shadow:0 0 0 0 rgba(47,129,247,0);}}
 .blob{transition:transform 0.8s ease-out;}
-
-/* 3D valec: sekcie sú panely na rotujúcom bubne, scroll ich vytáča dopredu */
-.cyl{will-change:transform,opacity;transform-origin:50% 50%;backface-visibility:hidden;}
-@media (prefers-reduced-motion:reduce){.blob{transition:none;}.btn.primary{animation:none;}.cyl{transform:none!important;opacity:1!important;}.hero3d{display:none;}}
-
-/* 3D scéna v hero (Three.js — svetlá, tiene, sklo, bloom) */
-.hero3d{position:relative;margin-top:38px;height:400px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#0d1117;}
-.hero3d canvas{width:100%;height:100%;display:block;cursor:grab;}
-.hero3d canvas:active{cursor:grabbing;}
-.hero3d-hint{position:absolute;right:12px;bottom:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-faint);pointer-events:none;background:rgba(13,17,23,.55);padding:3px 8px;border-radius:6px;}
-@media (max-width:600px){.hero3d{height:300px;}}
+@media (prefers-reduced-motion:reduce){.blob{transition:none;}.btn.primary{animation:none;}}
 /* Dotykové zariadenia: tap nemá "hover", tak neaplikuj lepivé hover transformácie */
 @media (hover:none){
   .btn.primary:hover,.btn.ghost:hover,.cbtn:hover{transform:none;}
@@ -341,11 +331,6 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
     </div>
   </div>
 </div>
-</div>
-
-<div class="hero3d reveal" id="hero3d">
-  <canvas id="scene3d"></canvas>
-  <div class="hero3d-hint" data-i18n="hint_3d">3D scéna — potiahni myšou</div>
 </div>
 </section>
 
@@ -559,7 +544,6 @@ ref_role:"vedúci Tímu aplikačnej podpory, SkyToll", ref_pdf:"celá referencia
 early_note:"Prvé kroky vo webdevelopmente — jednoduché statické stránky pre reálnych klientov.",
 contact_lead:"Otvorený novým príležitostiam. Ozvite sa.",
 footer_built:"statická stránka na GitHub Pages",
-hint_3d:"3D scéna — potiahni myšou",
 live:"Web", code:"Kód",
 typed:["Backend vývoj v Pythone","FastAPI · Django · PostgreSQL","AI integrácia · LLM · vibecoding","Cloud Run · Docker · CI/CD","7+ rokov IT praxe v SkyToll"]
 },
@@ -576,7 +560,6 @@ ref_role:"Head of Application Support Team, SkyToll", ref_pdf:"full reference (P
 early_note:"First steps in web development — simple static sites for real clients.",
 contact_lead:"Open to new opportunities. Let's talk.",
 footer_built:"static site on GitHub Pages",
-hint_3d:"3D scene — drag to rotate",
 live:"Live", code:"Code",
 typed:["Python backend development","FastAPI · Django · PostgreSQL","AI integration · LLM · vibecoding","Cloud Run · Docker · CI/CD","7+ years of IT experience at SkyToll"]
 },
@@ -593,7 +576,6 @@ ref_role:"Leiter des Application-Support-Teams, SkyToll", ref_pdf:"vollständige
 early_note:"Erste Schritte in der Webentwicklung — einfache statische Websites für echte Kunden.",
 contact_lead:"Offen für neue Möglichkeiten. Melden Sie sich.",
 footer_built:"statische Website auf GitHub Pages",
-hint_3d:"3D-Szene — zum Drehen ziehen",
 live:"Live", code:"Code",
 typed:["Python-Backend-Entwicklung","FastAPI · Django · PostgreSQL","KI-Integration · LLM · Vibecoding","Cloud Run · Docker · CI/CD","7+ Jahre IT-Erfahrung bei SkyToll"]
 }
@@ -734,40 +716,6 @@ initReveal();
   draw();
 })();
 (function(){
-  // 3D valec — sekcie ako panely na bubne rotujúcom pri scrolle
-  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var secs = Array.prototype.slice.call(document.querySelectorAll("main > section"));
-  if(!secs.length) return;
-  secs.forEach(function(s){ s.classList.add("cyl"); });
-  var MAX_ROT = 34;    // max naklonenie panelu (stupne)
-  var DEPTH   = 150;   // max posun dozadu (px)
-  var ticking = false;
-  function apply(){
-    ticking = false;
-    var vh = window.innerHeight;
-    for(var i=0;i<secs.length;i++){
-      var s = secs[i];
-      var r = s.getBoundingClientRect();
-      if(r.bottom < 0 || r.top > vh){ s.style.transform=""; s.style.opacity=""; continue; }
-      var center = r.top + r.height/2;
-      // p: 1 = sekcia dole pod viewportom, 0 = v strede, -1 = hore nad viewportom
-      var p = (center - vh/2) / (vh/2 + r.height/2);
-      p = Math.max(-1, Math.min(1, p));
-      var rot = -p * MAX_ROT;
-      var z = -Math.abs(p) * DEPTH;
-      // rotácia okolo hrany: pri vstupe zospodu okolo hornej, pri odchode okolo dolnej
-      // (rotácia okolo stredu by pri vysokých sekciách vystrelila okraj pred kameru)
-      s.style.transformOrigin = (p > 0) ? "50% 0%" : "50% 100%";
-      s.style.transform = "perspective(1100px) translateZ("+z.toFixed(1)+"px) rotateX("+rot.toFixed(2)+"deg)";
-      s.style.opacity = (1 - Math.abs(p)*0.45).toFixed(3);
-    }
-  }
-  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(apply); } }
-  window.addEventListener("scroll", onScroll, {passive:true});
-  window.addEventListener("resize", onScroll);
-  apply();
-})();
-(function(){
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const blobs=document.querySelectorAll('.blob'); if(!blobs.length) return;
   document.addEventListener('mousemove',function(e){
@@ -776,195 +724,6 @@ initReveal();
     blobs[0].style.transform=`translate(${moveX}px,${moveY}px)`;
     if(blobs[1]) blobs[1].style.transform=`translate(${-moveX*0.7}px,${-moveY*0.7}px)`;
   });
-})();
-</script>
-
-<script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
-</script>
-<script>
-(function(){
-  // Interaktívna 3D scéna (Three.js): svetlá s tieňmi, OrbitControls,
-  // PBR materiály (kov + sklo), levitovanie, parallax podľa kurzora a bloom.
-  var box = document.getElementById('hero3d');
-  if(!box) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  // Three.js (~600 kB) sa stiahne až keď je scéna blízko viewportu
-  var started = false;
-  var io = new IntersectionObserver(function(en){
-    if(en[0].isIntersecting && !started){ started = true; io.disconnect(); init(); }
-  },{rootMargin:'300px'});
-  io.observe(box);
-
-  function init(){
-    Promise.all([
-      import('three'),
-      import('three/addons/controls/OrbitControls.js'),
-      import('three/addons/postprocessing/EffectComposer.js'),
-      import('three/addons/postprocessing/RenderPass.js'),
-      import('three/addons/postprocessing/UnrealBloomPass.js'),
-      import('three/addons/postprocessing/OutputPass.js')
-    ]).then(function(m){
-      build(m[0], m[1].OrbitControls, m[2].EffectComposer, m[3].RenderPass, m[4].UnrealBloomPass, m[5].OutputPass);
-    }).catch(function(){ box.style.display = 'none'; });
-  }
-
-  function build(THREE, OrbitControls, EffectComposer, RenderPass, UnrealBloomPass, OutputPass){
-    var canvas = document.getElementById('scene3d');
-    var touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-    var renderer;
-    try{
-      renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true});
-    }catch(e){ box.style.display = 'none'; return; }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0d1117);
-
-    var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 1.1, 7.6);
-
-    // Svetlá: ambient + directional s tieňmi + farebné point lighty
-    scene.add(new THREE.AmbientLight(0xffffff, 0.45));
-    var dir = new THREE.DirectionalLight(0xffffff, 2.2);
-    dir.position.set(4, 7, 4);
-    dir.castShadow = true;
-    dir.shadow.mapSize.set(1024, 1024);
-    dir.shadow.camera.near = 1; dir.shadow.camera.far = 25;
-    dir.shadow.camera.left = -8; dir.shadow.camera.right = 8;
-    dir.shadow.camera.top = 8; dir.shadow.camera.bottom = -8;
-    scene.add(dir);
-    var pBlue = new THREE.PointLight(0x2f81f7, 16, 20, 2);
-    pBlue.position.set(-4, 2.5, 3); scene.add(pBlue);
-    var pGreen = new THREE.PointLight(0x3fb950, 12, 20, 2);
-    pGreen.position.set(4, -1, 2.5); scene.add(pGreen);
-
-    var group = new THREE.Group();
-    scene.add(group);
-
-    // Kovový torus knot
-    var knot = new THREE.Mesh(
-      new THREE.TorusKnotGeometry(0.85, 0.26, 160, 24),
-      new THREE.MeshStandardMaterial({color:0x2f81f7, metalness:0.9, roughness:0.18})
-    );
-    knot.position.set(-1.9, 0.1, 0);
-    knot.castShadow = true;
-    group.add(knot);
-
-    // Sklenený ikosaéder (transmission)
-    var glass = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.0, 0),
-      new THREE.MeshPhysicalMaterial({color:0xffffff, metalness:0, roughness:0.06, transmission:1, thickness:1.4, ior:1.45, clearcoat:1})
-    );
-    glass.position.set(1.9, 0.15, 0);
-    glass.castShadow = true;
-    group.add(glass);
-
-    // Kovový oktaéder s jemnou emisiou
-    var core = new THREE.Mesh(
-      new THREE.OctahedronGeometry(0.55, 0),
-      new THREE.MeshStandardMaterial({color:0x3fb950, metalness:0.85, roughness:0.25, emissive:0x3fb950, emissiveIntensity:0.25})
-    );
-    core.position.set(0, -0.2, 0.6);
-    core.castShadow = true;
-    group.add(core);
-
-    // Žiariace gule na orbite (rozsvieti ich bloom)
-    var orbs = [];
-    for(var i = 0; i < 3; i++){
-      var c = (i % 2) ? 0x3fb950 : 0x2f81f7;
-      var orb = new THREE.Mesh(
-        new THREE.SphereGeometry(0.08, 16, 16),
-        new THREE.MeshStandardMaterial({color:c, emissive:c, emissiveIntensity:3})
-      );
-      group.add(orb); orbs.push(orb);
-    }
-
-    // Podlaha zachytávajúca tiene
-    var ground = new THREE.Mesh(new THREE.CircleGeometry(8, 48), new THREE.ShadowMaterial({opacity:0.35}));
-    ground.rotation.x = -Math.PI/2;
-    ground.position.y = -1.7;
-    ground.receiveShadow = true;
-    scene.add(ground);
-
-    // Post-processing: bloom
-    var composer = new EffectComposer(renderer);
-    composer.addPass(new RenderPass(scene, camera));
-    composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.35, 0.35, 0.88));
-    composer.addPass(new OutputPass());
-
-    // OrbitControls len na desktope; na dotyku by kradli scroll
-    var controls = null;
-    if(!touch){
-      controls = new OrbitControls(camera, canvas);
-      controls.enableZoom = false;
-      controls.enablePan = false;
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.06;
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 0.8;
-      controls.minPolarAngle = 0.9;
-      controls.maxPolarAngle = 2.0;
-    } else {
-      canvas.style.touchAction = 'pan-y';
-    }
-
-    // Parallax podľa kurzora
-    var px = 0, py = 0;
-    if(!touch){
-      box.addEventListener('pointermove', function(e){
-        var r = box.getBoundingClientRect();
-        px = ((e.clientX - r.left)/r.width - 0.5)*2;
-        py = ((e.clientY - r.top)/r.height - 0.5)*2;
-      });
-    }
-
-    function resize(){
-      var w = box.clientWidth, h = box.clientHeight;
-      renderer.setSize(w, h, false);
-      composer.setSize(w, h);
-      camera.aspect = w/h;
-      camera.updateProjectionMatrix();
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    // Renderuj len keď je scéna vo viewporte
-    var visible = true;
-    new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(box);
-
-    var clock = new THREE.Clock();
-    function loop(){
-      requestAnimationFrame(loop);
-      if(!visible) return;
-      var t = clock.getElapsedTime();
-      knot.rotation.x = t*0.35; knot.rotation.y = t*0.22;
-      knot.position.y = 0.1 + Math.sin(t*0.9)*0.2;
-      glass.rotation.y = t*0.3; glass.rotation.z = t*0.14;
-      glass.position.y = 0.15 + Math.sin(t*0.9 + 2.1)*0.2;
-      core.rotation.y = t*0.5;
-      core.position.y = -0.2 + Math.sin(t*0.9 + 4.2)*0.15;
-      for(var i = 0; i < orbs.length; i++){
-        var a = t*0.7 + i*(Math.PI*2/3);
-        orbs[i].position.set(Math.cos(a)*2.7, Math.sin(a*1.3)*0.7, Math.sin(a)*2.7);
-      }
-      group.rotation.x += ((py*0.12) - group.rotation.x)*0.05;
-      group.rotation.y += ((px*0.18) - group.rotation.y)*0.05;
-      if(controls){
-        controls.update();
-      } else {
-        var ca = t*0.12;
-        camera.position.set(Math.sin(ca)*7.6, 1.1, Math.cos(ca)*7.6);
-        camera.lookAt(0, 0, 0);
-      }
-      composer.render();
-    }
-    loop();
-  }
 })();
 </script>
 </body>
