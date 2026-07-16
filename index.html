@@ -447,10 +447,16 @@ de_desc:"Analyse und Kontrolle von Daten aus Mautbrücken anhand von Fotoaufnahm
   
 var PROJECTS = [
 
+{ icon:"⛅", name:"MeteoDuo (FastAPI + React)", img:"assets/covers/meteoduo.png", stack:"FastAPI · React · AWS Lambda · API Gateway · ECR · GitHub Actions",
+sk:"Môj najnovší projekt — predpovede počasia z viacerých zdrojov vedľa seba (yr.no, SHMÚ meteogramy, modely ECMWF/ICON/GFS) pre 1068 slovenských obcí, s výstrahami, PWA offline režimom a tmavým režimom. JSX kompiluje server (dukpy) — bez Node. Nasadené serverless na AWS Lambda (container image) za API Gateway, CI/CD cez GitHub Actions (OIDC) do ECR.",
+en:"My latest project — side-by-side weather forecasts from multiple sources (yr.no, SHMÚ meteograms, ECMWF/ICON/GFS models) for 1,068 Slovak municipalities, with weather warnings, PWA offline mode, and dark mode. JSX is compiled server-side (dukpy) — no Node. Deployed serverless on AWS Lambda (container image) behind API Gateway, CI/CD via GitHub Actions (OIDC) to ECR.",
+de:"Mein neuestes Projekt — Wettervorhersagen aus mehreren Quellen nebeneinander (yr.no, SHMÚ-Meteogramme, Modelle ECMWF/ICON/GFS) für 1 068 slowakische Gemeinden, mit Wetterwarnungen, PWA-Offline-Modus und Dark Mode. JSX wird serverseitig kompiliert (dukpy) — ohne Node. Serverless auf AWS Lambda (Container-Image) hinter API Gateway, CI/CD über GitHub Actions (OIDC) nach ECR.",
+live:"https://h3r2z4x75k.execute-api.eu-central-1.amazonaws.com/", code:"https://github.com/Lipnicanmilos/MeteoDuo" },
+
 { icon:"❑", name:"Lexinova (FastAPI)", img:"assets/covers/lexinova.png", stack:"FastAPI · PostgreSQL · AI / LLM · PWA · Cloud Run",
-sk:"Môj najnovší projekt — asynchrónna backend architektúra v FastAPI (Type Hinting, Pydantic) s integráciou AI (LLM), návrh PostgreSQL databázy a automatizované CI/CD nasadenie do Google Cloud Run cez GitHub.",
-en:"My latest project — async backend architecture in FastAPI (type hinting, Pydantic) with AI (LLM) integration, PostgreSQL database design, and automated CI/CD deployment to Google Cloud Run via GitHub.",
-de:"Mein neuestes Projekt — asynchrone Backend-Architektur in FastAPI (Type Hinting, Pydantic) mit KI-Integration (LLM), Design der PostgreSQL-Datenbank und automatisiertes CI/CD-Deployment auf Google Cloud Run über GitHub.",
+sk:"Môj hlavný projekt — asynchrónna backend architektúra v FastAPI (Type Hinting, Pydantic) s integráciou AI (LLM), návrh PostgreSQL databázy a automatizované CI/CD nasadenie do Google Cloud Run cez GitHub.",
+en:"My flagship project — async backend architecture in FastAPI (type hinting, Pydantic) with AI (LLM) integration, PostgreSQL database design, and automated CI/CD deployment to Google Cloud Run via GitHub.",
+de:"Mein Hauptprojekt — asynchrone Backend-Architektur in FastAPI (Type Hinting, Pydantic) mit KI-Integration (LLM), Design der PostgreSQL-Datenbank und automatisiertes CI/CD-Deployment auf Google Cloud Run über GitHub.",
 live:"https://lexinova.fun/", code:"https://github.com/Lipnicanmilos/lexinova" },
 
 { icon:"◲", name:"Tracking Projects Pulse (Django)", img:"assets/covers/tracking.png", stack:"Django · APScheduler · cx_Oracle · pyodbc · Paramiko · ReportLab · pandas · JIRA",
