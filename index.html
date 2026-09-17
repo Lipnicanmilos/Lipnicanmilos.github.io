@@ -241,7 +241,8 @@ section{padding:54px 0;}
 /* Vybraný projekt */
 .feat{background:var(--bg-card);border:1px solid var(--border-hover);border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 50px -30px rgba(47,129,247,.45);}
 .feat-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);border-bottom:1px solid var(--border);}
-.feat-cover{width:100%;height:100%;aspect-ratio:2/1;object-fit:cover;display:block;border-right:1px solid var(--border);}
+.feat-media{display:flex;align-items:center;justify-content:center;padding:18px;border-right:1px solid var(--border);background:var(--bg-soft);}
+.feat-cover{width:100%;height:auto;aspect-ratio:2/1;object-fit:contain;display:block;border-radius:8px;}
 .feat-head{padding:24px 26px;display:flex;flex-direction:column;justify-content:center;}
 .feat-badge{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--accent-2);letter-spacing:.04em;margin-bottom:8px;}
 .feat-head h3{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px;}
@@ -256,7 +257,7 @@ section{padding:54px 0;}
 .sub-head{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em;margin:40px 0 16px;}
 @media(max-width:720px){
   .feat-top{grid-template-columns:1fr;}
-  .feat-cover{height:auto;border-right:none;border-bottom:1px solid var(--border);}
+  .feat-media{border-right:none;border-bottom:1px solid var(--border);padding:16px;}
   .feat-list{grid-template-columns:1fr;}
   .feat-head,.feat-body{padding-left:20px;padding-right:20px;}
 }
@@ -495,7 +496,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color
 <!-- Vybraný projekt je statické HTML (čitateľné aj bez JS); ostatné projekty renderuje JS z poľa PROJECTS. -->
 <article class="feat reveal">
 <div class="feat-top">
-<img class="feat-cover" src="assets/covers/lexinova.png" alt="Lexinova" loading="lazy">
+<div class="feat-media"><img class="feat-cover" src="assets/covers/lexinova.png" alt="Lexinova" loading="lazy"></div>
 <div class="feat-head">
 <div class="feat-badge" data-i18n="feat_badge">★ VYBRANÝ PROJEKT · V PRODUKCII</div>
 <h3>Lexinova</h3>
