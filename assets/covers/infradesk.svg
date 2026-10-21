@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Consolas, 'JetBrains Mono', monospace">
+  <!-- Schematická ilustrácia InfraDesku: bez skutočných dát, mien serverov ani čísel. -->
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#4B8BBE"/>
+      <stop offset="1" stop-color="#FFD43B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" rx="22" fill="#0d1117"/>
+  <rect x="1" y="1" width="1198" height="598" rx="22" fill="none" stroke="#30363d" stroke-width="2"/>
+
+  <!-- title bar -->
+  <rect x="0" y="0" width="1200" height="60" rx="22" fill="#161b22"/>
+  <rect x="0" y="38" width="1200" height="22" fill="#161b22"/>
+  <circle cx="40" cy="30" r="8" fill="#4B8BBE"/>
+  <circle cx="66" cy="30" r="8" fill="#FFD43B"/>
+  <circle cx="92" cy="30" r="8" fill="#30363d"/>
+  <text x="128" y="38" font-size="22" fill="#8b949e">InfraDesk — ops cockpit</text>
+  <line x1="0" y1="60" x2="1200" y2="60" stroke="#21262d" stroke-width="2"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="61" width="250" height="539" fill="#11161d"/>
+  <line x1="250" y1="61" x2="250" y2="600" stroke="#21262d" stroke-width="2"/>
+  <g font-size="19" fill="#8b949e">
+    <rect x="18" y="86" width="214" height="40" rx="8" fill="#4B8BBE" fill-opacity=".18" stroke="#4B8BBE" stroke-opacity=".6"/>
+    <text x="36" y="113" fill="#e6edf3">INC / CHANGES</text>
+    <text x="36" y="168">ORACLE · SQL</text>
+    <text x="36" y="216">LOGS · AI</text>
+    <text x="36" y="264">MONITORING</text>
+    <text x="36" y="312">VPN · RDP</text>
+    <text x="36" y="360">SFTP · SHARES</text>
+    <text x="36" y="408">TRANSCRIPT</text>
+    <text x="36" y="456">TIME TRACKER</text>
+  </g>
+
+  <!-- status tiles -->
+  <g>
+    <rect x="280" y="86" width="280" height="110" rx="14" fill="#161b22" stroke="#21262d" stroke-width="2"/>
+    <text x="304" y="124" font-size="17" fill="#8b949e">HPSM · INCIDENTS</text>
+    <rect x="304" y="146" width="150" height="14" rx="7" fill="#4B8BBE"/>
+    <rect x="304" y="170" width="96" height="10" rx="5" fill="#30363d"/>
+
+    <rect x="580" y="86" width="280" height="110" rx="14" fill="#161b22" stroke="#21262d" stroke-width="2"/>
+    <text x="604" y="124" font-size="17" fill="#8b949e">JIRA · CHANGES</text>
+    <rect x="604" y="146" width="190" height="14" rx="7" fill="#4B8BBE" fill-opacity=".7"/>
+    <rect x="604" y="170" width="120" height="10" rx="5" fill="#30363d"/>
+
+    <rect x="880" y="86" width="290" height="110" rx="14" fill="#161b22" stroke="#21262d" stroke-width="2"/>
+    <text x="904" y="124" font-size="17" fill="#8b949e">HEALTH-CHECK</text>
+    <circle cx="916" cy="160" r="10" fill="#FFD43B"/>
+    <circle cx="948" cy="160" r="10" fill="#FFD43B"/>
+    <circle cx="980" cy="160" r="10" fill="#FFD43B"/>
+    <circle cx="1012" cy="160" r="10" fill="#4B8BBE"/>
+    <circle cx="1044" cy="160" r="10" fill="#FFD43B"/>
+  </g>
+
+  <!-- monitoring chart -->
+  <rect x="280" y="218" width="430" height="356" rx="14" fill="#161b22" stroke="#21262d" stroke-width="2"/>
+  <text x="304" y="256" font-size="17" fill="#8b949e">INTERFACE MONITORING</text>
+  <g stroke="#21262d" stroke-width="1.5">
+    <line x1="304" y1="330" x2="686" y2="330"/>
+    <line x1="304" y1="400" x2="686" y2="400"/>
+    <line x1="304" y1="470" x2="686" y2="470"/>
+    <line x1="304" y1="540" x2="686" y2="540"/>
+  </g>
+  <polyline points="304,470 352,430 400,450 448,380 496,400 544,340 592,360 640,310 686,322" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="304,520 352,505 400,512 448,490 496,500 544,470 592,482 640,460 686,466" fill="none" stroke="#4B8BBE" stroke-opacity=".45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- AI log analysis -->
+  <rect x="730" y="218" width="440" height="356" rx="14" fill="#0a0e14" stroke="#30363d" stroke-width="2"/>
+  <text x="754" y="256" font-size="17" fill="#8b949e">LOG ANALYSIS · LLM</text>
+  <g font-size="16">
+    <text x="754" y="300" fill="#6e7681">&gt;&gt;&gt; logs.fetch(env="PROD")</text>
+    <rect x="754" y="318" width="360" height="9" rx="4" fill="#30363d"/>
+    <rect x="754" y="338" width="300" height="9" rx="4" fill="#30363d"/>
+    <rect x="754" y="358" width="330" height="9" rx="4" fill="#FFD43B" fill-opacity=".55"/>
+    <rect x="754" y="378" width="240" height="9" rx="4" fill="#30363d"/>
+    <text x="754" y="428" fill="#6e7681">&gt;&gt;&gt; ai.analyze(logs)</text>
+    <rect x="754" y="448" width="392" height="96" rx="10" fill="#4B8BBE" fill-opacity=".12" stroke="#4B8BBE" stroke-opacity=".55"/>
+    <text x="774" y="480" fill="#FFD43B">probable cause</text>
+    <rect x="774" y="496" width="300" height="9" rx="4" fill="#8b949e" fill-opacity=".5"/>
+    <rect x="774" y="516" width="220" height="9" rx="4" fill="#8b949e" fill-opacity=".5"/>
+  </g>
+</svg>

@@ -4,8 +4,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1200, 630
 BG      = (13, 17, 23)
-BLUE    = (47, 129, 247)
-GREEN   = (63, 185, 80)
+BLUE    = (75, 139, 190)   # Python modra #4B8BBE
+YELLOW  = (255, 212, 59)   # Python zlta #FFD43B
 WHITE   = (230, 237, 243)
 DIM     = (139, 148, 158)
 
@@ -33,7 +33,7 @@ d.text((LEFT, 158), "PORTFOLIO  ·  BRATISLAVA, SLOVAKIA", font=f(REG, 27), fill
 d.text((LEFT, 228), "Ing. Miloš Lipničan", font=f(BOLD, 66), fill=WHITE)
 
 # titul — zmensi, kym sa nezmesti do sirky
-title = "IT Application Support & Backend Developer"
+title = "Application Operations & AI Automation"
 size = 44
 while size > 26:
     ft = f(BOLD, size)
@@ -42,12 +42,12 @@ while size > 26:
     size -= 1
 d.text((LEFT, 326), title, font=ft, fill=BLUE)
 
-# zelena linka
+# zlta linka
 rule_y = 404
-d.rectangle([LEFT, rule_y, LEFT + 142, rule_y + 5], fill=GREEN)
+d.rectangle([LEFT, rule_y, LEFT + 142, rule_y + 5], fill=YELLOW)
 
 # stack
-d.text((LEFT, 442), "Python · FastAPI · Oracle · PostgreSQL · Docker · Cloud · AI",
+d.text((LEFT, 442), ">>> Python · Oracle · FastAPI · Monitoring · LLM",
        font=f(REG, 28), fill=DIM)
 
 # url
